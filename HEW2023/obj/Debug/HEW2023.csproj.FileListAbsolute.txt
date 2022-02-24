@@ -1,0 +1,10 @@
+C:\makeProgram\C#\HEW2023\HEW2023\obj\Debug\HEW2023.csproj.AssemblyReference.cache
+C:\makeProgram\C#\HEW2023\HEW2023\obj\Debug\HEW2023.Index.resources
+C:\makeProgram\C#\HEW2023\HEW2023\obj\Debug\HEW2023.Properties.Resources.resources
+C:\makeProgram\C#\HEW2023\HEW2023\obj\Debug\HEW2023.csproj.GenerateResource.cache
+C:\makeProgram\C#\HEW2023\HEW2023\obj\Debug\HEW2023.csproj.CoreCompileInputs.cache
+C:\makeProgram\C#\HEW2023\HEW2023\bin\Debug\HEW2023.exe.config
+C:\makeProgram\C#\HEW2023\HEW2023\bin\Debug\HEW2023.exe
+C:\makeProgram\C#\HEW2023\HEW2023\bin\Debug\HEW2023.pdb
+C:\makeProgram\C#\HEW2023\HEW2023\obj\Debug\HEW2023.exe
+C:\makeProgram\C#\HEW2023\HEW2023\obj\Debug\HEW2023.pdb
