@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 using System.Windows.Forms;
 
 namespace HEW2023
@@ -17,9 +18,128 @@ namespace HEW2023
             InitializeComponent();
         }
 
+        public Form1 f1 = null;
+        public Form2 f2 = null;
+        public Form3 f3 = null;
+        public Form4 f4 = null;
+        public Form5 f5 = null;
+        public Form6 f6 = null;
+        public login login = null;
+
         private void index_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (this.f1 == null || this.f1.IsDisposed)
+            {
+                this.f1 = new Form1();
+                f1.Show();
+            }
+            else
+            {
+                f1.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (this.f2 == null || this.f2.IsDisposed)
+            {
+                this.f2 = new Form2();
+                f2.Show();
+            }
+            else
+            {
+                f2.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (this.f3 == null || this.f3.IsDisposed)
+            {
+                this.f3 = new Form3();
+                f3.Show();
+            }
+            else
+            {
+                f3.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (this.f4 == null || this.f4.IsDisposed)
+            {
+                this.f4 = new Form4();
+                f4.Show();
+            }
+            else
+            {
+                f4.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (this.f5 == null || this.f5.IsDisposed)
+            {
+                this.f5 = new Form5();
+                f5.Show();
+            }
+            else
+            {
+                f5.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (this.f6 == null || this.f6.IsDisposed)
+            {
+                this.f6 = new Form6();
+                f6.Show();
+            }
+            else
+            {
+                f6.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if (this.login == null || this.login.IsDisposed)
+            {
+                this.login = new login();
+                login.Show();
+            }
+            else
+            {
+                login.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if (button7.Visible == false)
+            {
+                button7.Visible = true;
+                Console.WriteLine("ログインボタン表示");
+                DispatcherTimer timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(3) };
+                timer.Start();
+                timer.Tick += (s, args) =>
+                {
+                    // タイマーの停止
+                    timer.Stop();
+
+                    // 以下に待機後の処理を書く
+                    button7.Visible = false;
+                    Console.WriteLine("ログインボタン非表示");
+                };
+            }
         }
     }
 }
