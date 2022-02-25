@@ -1,4 +1,3 @@
-C:\makeProgram\C#\HEW2023\HEW2023\obj\Debug\HEW2023.csproj.AssemblyReference.cache
 C:\makeProgram\C#\HEW2023\HEW2023\obj\Debug\HEW2023.Index.resources
 C:\makeProgram\C#\HEW2023\HEW2023\obj\Debug\HEW2023.Properties.Resources.resources
 C:\makeProgram\C#\HEW2023\HEW2023\obj\Debug\HEW2023.csproj.GenerateResource.cache
@@ -48,3 +47,5 @@ C:\makeProgram\C#\HEW2023\HEW2023\obj\Debug\HEW2023.Form4.resources
 C:\makeProgram\C#\HEW2023\HEW2023\obj\Debug\HEW2023.Form5.resources
 C:\makeProgram\C#\HEW2023\HEW2023\obj\Debug\HEW2023.Form6.resources
 C:\makeProgram\C#\HEW2023\HEW2023\obj\Debug\HEW2023.login.resources
+C:\makeProgram\C#\HEW2023\HEW2023\obj\Debug\HEW2023.csproj.AssemblyReference.cache
+C:\makeProgram\C#\HEW2023\HEW2023\obj\Debug\HEW2023.Form7.resources

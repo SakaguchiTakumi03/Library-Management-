@@ -30,9 +30,9 @@ namespace HEW2023
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox_id = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox_pass = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -45,12 +45,16 @@ namespace HEW2023
             this.label1.TabIndex = 23;
             this.label1.Text = "ユーザID";
             // 
-            // textBox1
+            // textBox_id
             // 
-            this.textBox1.Location = new System.Drawing.Point(77, 28);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(123, 19);
-            this.textBox1.TabIndex = 22;
+            this.textBox_id.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.textBox_id.Location = new System.Drawing.Point(77, 28);
+            this.textBox_id.Name = "textBox_id";
+            this.textBox_id.PasswordChar = '*';
+            this.textBox_id.ShortcutsEnabled = false;
+            this.textBox_id.Size = new System.Drawing.Size(123, 19);
+            this.textBox_id.TabIndex = 22;
+            this.textBox_id.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_id_KeyPress);
             // 
             // label2
             // 
@@ -61,12 +65,16 @@ namespace HEW2023
             this.label2.TabIndex = 25;
             this.label2.Text = "パスワード";
             // 
-            // textBox2
+            // textBox_pass
             // 
-            this.textBox2.Location = new System.Drawing.Point(77, 63);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(123, 19);
-            this.textBox2.TabIndex = 24;
+            this.textBox_pass.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.textBox_pass.Location = new System.Drawing.Point(77, 63);
+            this.textBox_pass.Name = "textBox_pass";
+            this.textBox_pass.PasswordChar = '*';
+            this.textBox_pass.ShortcutsEnabled = false;
+            this.textBox_pass.Size = new System.Drawing.Size(123, 19);
+            this.textBox_pass.TabIndex = 24;
+            this.textBox_pass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_pass_KeyPress);
             // 
             // button1
             // 
@@ -76,6 +84,7 @@ namespace HEW2023
             this.button1.TabIndex = 26;
             this.button1.Text = "ログイン";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // login
             // 
@@ -84,11 +93,12 @@ namespace HEW2023
             this.ClientSize = new System.Drawing.Size(236, 151);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox_pass);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBox_id);
             this.Name = "login";
             this.Text = "ユーザログイン";
+            this.Load += new System.EventHandler(this.login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -97,9 +107,9 @@ namespace HEW2023
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox_id;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox_pass;
         private System.Windows.Forms.Button button1;
     }
 }

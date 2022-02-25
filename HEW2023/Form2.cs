@@ -31,16 +31,27 @@ namespace HEW2023
             }
 
             DataGridView.MultiSelect = false;
+            DataGridView.ReadOnly = true;
             this.DataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-            List<List<String>> dataList = new List<List<string>>(dummy.GetDBBooksInfo());
-            List<String> columnsList = new List<string>(dummy.books_List());
+            int deleteNum = 3;
+
+            List<List<String>> dataList = new List<List<string>>(dummy.GetQuerySQL("books_list",dummy.books_pr(),deleteNum));
+            List<List<String>> categoryList = new List<List<string>>(dummy.GetQuerySQL("category_list", dummy.pr()));
+            List<List<String>> recommendationList = new List<List<string>>(dummy.GetQuerySQL("recommendation_list", dummy.pr()));
+            //List<String> columnsList = new List<string>(dummy.books_list());
+            List<String> columnsList = new List<string>(dummy.books_list());
+
+            columnsList.RemoveRange(columnsList.Count - deleteNum, deleteNum);
 
             int dataCount = dataList.Count();
             int columnsCount = columnsList.Count();
 
             dummy.intDebug(dataCount);
             dummy.intDebug(columnsCount);
+            dummy.StringDebug("");
+            dummy.intDebug(categoryList.Count);
+            dummy.intDebug(recommendationList.Count);
 
             for (int i = 0; i < columnsCount; i++)
             {
@@ -52,18 +63,43 @@ namespace HEW2023
                 DataRow dr = dt.NewRow();
                 for(int k = 0; k < columnsCount; k++)
                 {
-                    dr[columnsList[k].ToString()] = dataList[j][k];
+                    int index = 0;
+                    if (k == 3)
+                    {
+                        index = Int32.Parse(dataList[j][k]);
+                        dr[columnsList[k].ToString()] = categoryList[index-1][1];
+                    }
+                    else if (k == 4)
+                    {
+                        index = Int32.Parse(dataList[j][k]);
+                        dr[columnsList[k].ToString()] = recommendationList[index-1][1];
+                    }
+                    else if (k == 5)
+                    {
+                        if(dataList[j][k] == "")
+                        {
+                            dr[columnsList[k].ToString()] = "データがありません";
+                        }
+                        else
+                        {
+                            dr[columnsList[k].ToString()] = "あります。";
+                        }
+                    }
+                    else
+                    {
+                        dr[columnsList[k].ToString()] = dataList[j][k];
+                    }
                 }
                 dt.Rows.Add(dr);
             }
             DataGridView.DataSource = dt;
+            dummy.connectionClose();
 
             //DataGridViewのセルの存在を確認
             if (dummy.gridCheck(DataGridView, this.Text))
             {
                 this.Close();
             }
-
         }
     }
 }

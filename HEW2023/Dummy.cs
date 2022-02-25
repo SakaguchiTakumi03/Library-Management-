@@ -53,7 +53,7 @@ namespace HEW2023
             return books_pr;
         }
 
-        public List<String> books_List()
+        public List<String> books_list()
         {
             List<String> books_List = new List<string>()
             {
@@ -69,6 +69,28 @@ namespace HEW2023
                 "ブックマークフラグ"
             };
             return books_List;
+        }
+
+        public List<String> pr()
+        {
+            List<String> list = new List<string>()
+            {
+                "id",
+                "value"
+            };
+            return list;
+        }
+
+        public List<String> user_pr()
+        {
+            List<String> userList = new List<string>()
+            {
+                "id",
+                //"password",
+                "authorization",
+                "user"
+            };
+            return userList;
         }
 
         public List<List<String>> GetDBBooksInfo()
@@ -132,6 +154,7 @@ namespace HEW2023
             }
             catch (Exception e)
             {
+                Console.WriteLine("ConnectionDB_method_error");
                 MessageBox.Show(e.Message);
                 return false;
             }
@@ -156,6 +179,135 @@ namespace HEW2023
                 return false;
             }
         }
+
+        public List<List<String>> GetQuerySQL(String tableName, List<String> properties)
+        //public List<List<String>> GetQuerySQL(String tableName)
+        {
+            List<List<String>> dataList = new List<List<String>>();
+            try
+            {
+                String query = "SELECT * FROM `"+ tableName +"`";
+                StringDebug(query);
+
+                MySqlCommand cmd = new MySqlCommand(query, con);
+
+                this.da.SelectCommand = cmd;
+                this.da.Fill(this.dt);
+
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    List<string> columnsName = properties;
+                    //List<string> columnsName = list();
+
+                    int listCount = columnsName.Count();
+
+                    while (reader.Read())
+                    {
+                        List<String> columnsList = new List<string>();
+                        for (int i = 0; i < listCount; i++)
+                        {
+                            columnsList.Add(reader[columnsName[i]].ToString());
+                        }
+                        dataList.Add(columnsList);
+                    }
+                    reader.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("GetQuerySQL_error_"+tableName);
+                MessageBox.Show(e.Message);
+            }
+            //finally
+            //{
+            //    con.Close();
+            //}
+            return dataList;
+        }
+
+                public List<List<String>> GetQuerySQL(String tableName, List<String> properties, int deleteCount)
+        //public List<List<String>> GetQuerySQL(String tableName)
+        {
+            List<List<String>> dataList = new List<List<String>>();
+            try
+            {
+                String query = "SELECT * FROM `"+ tableName +"`";
+                StringDebug(query);
+
+                MySqlCommand cmd = new MySqlCommand(query, con);
+
+                this.da.SelectCommand = cmd;
+                this.da.Fill(this.dt);
+
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    List<string> columnsName = properties;
+
+                    columnsName.RemoveRange(columnsName.Count - deleteCount, deleteCount);
+
+                    //List<string> columnsName = list();
+
+                    int listCount = columnsName.Count();
+
+                    while (reader.Read())
+                    {
+                        List<String> columnsList = new List<string>();
+                        for (int i = 0; i < listCount; i++)
+                        {
+                            columnsList.Add(reader[columnsName[i]].ToString());
+                        }
+                        dataList.Add(columnsList);
+                    }
+                    reader.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            //finally
+            //{
+            //    con.Close();
+            //}
+            return dataList;
+        }
+
+        public void connectionClose()
+        {
+            StringDebug("SQLConnectionをCLOSEしました。");
+            con.Close();
+        }
+
+        public List<int> GetUserIndexInfo()
+        {
+            List<int> hoge = new List<int>()
+            {
+                2,1
+            };
+            return hoge;
+        }
+
+        public void NumOnlyKeyPress(KeyPressEventArgs e)
+        {
+            //バックスペースが押された時は有効（Deleteキーも有効）
+            if (e.KeyChar == '\b')
+            {
+                return;
+            }
+
+            //数値0～9以外が押された時はイベントをキャンセルする
+            if ((e.KeyChar < '0' || '9' < e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        //public String foreign_key_reference(int ListCount)
+        //{
+            
+        //}
 
         public void StringDebug(String hoge)
         {
