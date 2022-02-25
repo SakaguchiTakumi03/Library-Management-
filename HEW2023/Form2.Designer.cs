@@ -50,7 +50,7 @@ namespace HEW2023
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(388, 73);
             this.button1.TabIndex = 2;
-            this.button1.Text = "ブックマーク";
+            this.button1.Text = "ブックマーク（登録・削除）";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 

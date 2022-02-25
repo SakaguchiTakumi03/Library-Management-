@@ -95,7 +95,7 @@ namespace HEW2023
             {
                 if (originalDataList[i][9].Equals("1"))
                 {
-                    DataGridView.Rows[i].DefaultCellStyle.BackColor = Color.Aqua;
+                    DataGridView.Rows[i].DefaultCellStyle.BackColor = Color.Aqua;//背景色はここで変更する
                 }
             }
 
@@ -118,7 +118,6 @@ namespace HEW2023
             int selectedRowIndex = DataGridView.CurrentCell.RowIndex;
             String title = "";
             String message = "";
-            dummy.MessageBox_("", originalDataList[selectedRowIndex][9]);
             if (originalDataList[selectedRowIndex][9].Equals("1"))
             {
                 title = "ブックマークを消しますか？";
