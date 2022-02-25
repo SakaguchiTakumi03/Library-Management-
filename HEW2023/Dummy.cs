@@ -306,8 +306,50 @@ namespace HEW2023
 
         //public String foreign_key_reference(int ListCount)
         //{
-            
+
         //}
+
+        public DialogResult MessageBox_re(String title, String message)
+        {
+            DialogResult result = MessageBox.Show(message, title, MessageBoxButtons.YesNo);
+            return result;
+        }
+
+        public bool selectMessageBox(DialogResult result)
+        {
+            if (result == DialogResult.Yes)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void sqlExectionQuery(String query)
+        {
+            if (ConnectionDB())
+            {
+                using (MySqlTransaction transaction = con.BeginTransaction())
+                {
+                    try
+                    {
+                        using (MySqlCommand cmd = new MySqlCommand(query,con,transaction))
+                        {
+                            cmd.ExecuteNonQuery();
+                            transaction.Commit();
+                        }
+                    }
+                    catch(Exception e)
+                    {
+                        transaction.Rollback();
+                        MessageBox_("", e.ToString());
+                        this.Close();
+                    }
+                }
+            }
+        }
 
         public void StringDebug(String hoge)
         {

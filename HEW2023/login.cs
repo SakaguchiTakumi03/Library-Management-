@@ -26,17 +26,17 @@ namespace HEW2023
         {
 
 
-            //DispatcherTimer timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(15) };
-            //timer.Start();
-            //timer.Tick += (s, args) =>
-            //{
-            //    // タイマーの停止
-            //    timer.Stop();
+            DispatcherTimer timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(15) };
+            timer.Start();
+            timer.Tick += (s, args) =>
+            {
+                // タイマーの停止
+                timer.Stop();
 
-            //    // 以下に待機後の処理を書く
-            //    dummy.MessageBox_("error", "ログイン入力失敗のためもう一度やり直してください。");
-            //    this.Close();
-            //};
+                // 以下に待機後の処理を書く
+                dummy.MessageBox_("error", "ログイン入力失敗のためもう一度やり直してください。");
+                this.Close();
+            };
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -75,7 +75,6 @@ namespace HEW2023
             for (int i = 0; i < dataList.Count; i++)
             {
                 temp.Add(dataList[i][hoge[0]]);
-                //dummy.StringDebug("List「temp」の中身「" + dataList[i][hoge[0]] + "」i=" + i);
             }
 
             indexId = temp.IndexOf(inputId.ToString());
@@ -110,7 +109,4 @@ namespace HEW2023
             dummy.NumOnlyKeyPress(e);
         }
     }
-
-
-
 }
