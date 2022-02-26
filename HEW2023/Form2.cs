@@ -23,6 +23,9 @@ namespace HEW2023
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+
             //MySQLに接続を確立
             if (!dummy.ConnectionDB())
             {
@@ -37,21 +40,16 @@ namespace HEW2023
             int deleteNum = 3;
 
             List<List<String>> dataList = new List<List<string>>(dummy.GetQuerySQL("books_list",dummy.books_pr(),deleteNum));
+            List<List<String>> originalDataList = new List<List<string>>(dummy.GetQuerySQL("books_list", dummy.books_pr()));
             List<List<String>> categoryList = new List<List<string>>(dummy.GetQuerySQL("category_list", dummy.pr()));
             List<List<String>> recommendationList = new List<List<string>>(dummy.GetQuerySQL("recommendation_list", dummy.pr()));
-            //List<String> columnsList = new List<string>(dummy.books_list());
             List<String> columnsList = new List<string>(dummy.books_list());
 
             columnsList.RemoveRange(columnsList.Count - deleteNum, deleteNum);
 
             int dataCount = dataList.Count();
             int columnsCount = columnsList.Count();
-
-            dummy.intDebug(dataCount);
-            dummy.intDebug(columnsCount);
-            dummy.StringDebug("");
-            dummy.intDebug(categoryList.Count);
-            dummy.intDebug(recommendationList.Count);
+            int originalDataCount = originalDataList.Count();
 
             for (int i = 0; i < columnsCount; i++)
             {
@@ -95,11 +93,78 @@ namespace HEW2023
             DataGridView.DataSource = dt;
             dummy.connectionClose();
 
+            //ブックマークされている行の背景色を変更
+            for(int i = 0; i<originalDataCount; i++)
+            {
+                if (originalDataList[i][9].Equals("1"))
+                {
+                    DataGridView.Rows[i].DefaultCellStyle.BackColor = Color.Aqua;//背景色はここで変更する
+                }
+            }
+
             //DataGridViewのセルの存在を確認
             if (dummy.gridCheck(DataGridView, this.Text))
             {
                 this.Close();
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //MySQLに接続を確立
+            if (!dummy.ConnectionDB())
+            {
+                Console.WriteLine("「Form2」でDBのコネクションが確率出来ませんでした");
+                this.Close();
+            }
+            List<List<String>> originalDataList = new List<List<string>>(dummy.GetQuerySQL("books_list", dummy.books_pr()));
+            int selectedRowIndex = DataGridView.CurrentCell.RowIndex;
+            String title = "";
+            String message = "";
+            if (originalDataList[selectedRowIndex][9].Equals("1"))
+            {
+                title = "ブックマークを消しますか？";
+                selectedRowIndex++;
+                message = "選択された「" + selectedRowIndex + "」の登録を外しますか？";
+                //処理
+                if (dummy.selectMessageBox(dummy.MessageBox_re(title, message)))
+                {
+                    dummy.sqlExectionQuery(notBookmarkQuery(selectedRowIndex));
+                    title = "削除完了";
+                    message = "選択された「" + selectedRowIndex + "」を削除しました。";
+                    dummy.MessageBox_(title, message);
+                    this.Close();
+                }
+            }
+            else
+            {
+                title = "ブックマーク登録しますか？";
+                selectedRowIndex++;
+                message = "選択された「" + selectedRowIndex + "」を登録しますか？";
+                //処理
+                if (dummy.selectMessageBox(dummy.MessageBox_re(title, message)))
+                {
+                    dummy.sqlExectionQuery(bookmarkQuery(selectedRowIndex));
+                    title = "登録完了";
+                    message = "選択された「" + selectedRowIndex + "」を登録しました。";
+                    dummy.MessageBox_(title, message);
+                    this.Close();
+                }
+            }
+            dummy.connectionClose();
+        }
+
+        private String bookmarkQuery(int selectBookId)
+        {
+            String bookmarkQuery = "UPDATE `books_list` SET `bookmark_flag` = '1' WHERE `books_list`.`id` = " + selectBookId.ToString();
+            return bookmarkQuery;
+        }
+
+        private String notBookmarkQuery(int selectBookId)
+        {
+            String bookmarkQuery = "UPDATE `books_list` SET `bookmark_flag` = '0' WHERE `books_list`.`id` = " + selectBookId.ToString();
+            return bookmarkQuery;
+        }
+
     }
 }

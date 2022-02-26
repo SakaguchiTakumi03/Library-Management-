@@ -196,6 +196,7 @@ namespace HEW2023
             this.Controls.Add(this.dataGridView1);
             this.Name = "Form5";
             this.Text = "書籍検索";
+            this.Load += new System.EventHandler(this.Form5_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
