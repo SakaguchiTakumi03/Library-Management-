@@ -226,7 +226,7 @@ namespace HEW2023
             return dataList;
         }
 
-                public List<List<String>> GetQuerySQL(String tableName, List<String> properties, int deleteCount)
+        public List<List<String>> GetQuerySQL(String tableName, List<String> properties, int deleteCount)
         //public List<List<String>> GetQuerySQL(String tableName)
         {
             List<List<String>> dataList = new List<List<String>>();
@@ -304,10 +304,17 @@ namespace HEW2023
             }
         }
 
-        //public String foreign_key_reference(int ListCount)
-        //{
+        public List<List<String>> getCategoryList()
+        {
+            List<List<String>> categoryList = GetQuerySQL("category_list", pr());
+            return categoryList;
+        }
 
-        //}
+        public List<List<String>> getRecommendationList()
+        {
+            List<List<String>> recommendationList = GetQuerySQL("recommendation_list", pr());
+            return recommendationList;
+        }
 
         public DialogResult MessageBox_re(String title, String message)
         {

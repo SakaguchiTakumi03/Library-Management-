@@ -32,7 +32,6 @@ namespace HEW2023
             this.label5 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -40,7 +39,8 @@ namespace HEW2023
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.category_comboBox = new System.Windows.Forms.ComboBox();
+            this.recommendation_comboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label5
@@ -68,13 +68,6 @@ namespace HEW2023
             this.label4.Size = new System.Drawing.Size(57, 12);
             this.label4.TabIndex = 17;
             this.label4.Text = "おすすめ度";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(89, 138);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(160, 19);
-            this.textBox4.TabIndex = 16;
             // 
             // label3
             // 
@@ -125,6 +118,7 @@ namespace HEW2023
             this.button1.TabIndex = 20;
             this.button1.Text = "登録";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label6
             // 
@@ -135,26 +129,36 @@ namespace HEW2023
             this.label6.TabIndex = 21;
             this.label6.Text = "登録確認ウィンドウを作成";
             // 
-            // comboBox1
+            // category_comboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(89, 102);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(160, 20);
-            this.comboBox1.TabIndex = 22;
+            this.category_comboBox.FormattingEnabled = true;
+            this.category_comboBox.Location = new System.Drawing.Point(89, 102);
+            this.category_comboBox.Name = "category_comboBox";
+            this.category_comboBox.Size = new System.Drawing.Size(160, 20);
+            this.category_comboBox.TabIndex = 22;
+            this.category_comboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.category_comboBox_KeyPress);
+            // 
+            // recommendation_comboBox
+            // 
+            this.recommendation_comboBox.FormattingEnabled = true;
+            this.recommendation_comboBox.Location = new System.Drawing.Point(89, 138);
+            this.recommendation_comboBox.Name = "recommendation_comboBox";
+            this.recommendation_comboBox.Size = new System.Drawing.Size(160, 20);
+            this.recommendation_comboBox.TabIndex = 23;
+            this.recommendation_comboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.recommendation_comboBox_KeyPress);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(288, 303);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.recommendation_comboBox);
+            this.Controls.Add(this.category_comboBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox2);
@@ -173,7 +177,6 @@ namespace HEW2023
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox2;
@@ -181,6 +184,7 @@ namespace HEW2023
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox category_comboBox;
+        private System.Windows.Forms.ComboBox recommendation_comboBox;
     }
 }
