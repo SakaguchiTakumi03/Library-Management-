@@ -22,11 +22,13 @@ namespace HEW2023
             InitializeComponent();
         }
 
+        DispatcherTimer timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(15) };
+
         private void login_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
 
-
-            DispatcherTimer timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(15) };
             timer.Start();
             timer.Tick += (s, args) =>
             {
@@ -83,6 +85,7 @@ namespace HEW2023
             {
                 this.f7 = new Form7();
                 f7.Show();
+                timer.Stop();
                 this.Close();
             }
             else

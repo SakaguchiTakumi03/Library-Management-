@@ -161,6 +161,7 @@ namespace HEW2023
             this.Controls.Add(this.textBox1);
             this.Name = "Form1";
             this.Text = "書籍登録";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

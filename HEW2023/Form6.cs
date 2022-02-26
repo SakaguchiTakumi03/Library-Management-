@@ -16,5 +16,11 @@ namespace HEW2023
         {
             InitializeComponent();
         }
+
+        private void Form6_Load(object sender, EventArgs e)
+        {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+        }
     }
 }

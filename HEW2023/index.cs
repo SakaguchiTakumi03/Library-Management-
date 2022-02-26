@@ -28,7 +28,8 @@ namespace HEW2023
 
         private void index_Load(object sender, EventArgs e)
         {
-
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
         }
 
         private void button1_Click(object sender, EventArgs e)

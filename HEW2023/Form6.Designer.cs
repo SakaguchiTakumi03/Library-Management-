@@ -38,6 +38,7 @@ namespace HEW2023
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "Form6";
             this.Text = "書籍削除";
+            this.Load += new System.EventHandler(this.Form6_Load);
             this.ResumeLayout(false);
 
         }
