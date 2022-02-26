@@ -50,6 +50,7 @@ namespace HEW2023
             this.Controls.Add(this.elementHost1);
             this.Name = "Form4";
             this.Text = "書籍登録推移";
+            this.Load += new System.EventHandler(this.Form4_Load);
             this.ResumeLayout(false);
 
         }

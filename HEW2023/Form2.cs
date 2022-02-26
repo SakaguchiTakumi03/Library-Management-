@@ -23,6 +23,9 @@ namespace HEW2023
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+
             //MySQLに接続を確立
             if (!dummy.ConnectionDB())
             {
