@@ -155,7 +155,9 @@ namespace HEW2023
             catch (Exception e)
             {
                 Console.WriteLine("ConnectionDB_method_error");
-                MessageBox.Show(e.Message);
+                //MessageBox.Show(e.Message);
+                MessageBox_("SQLコネクションエラー",e.Message);
+                this.Close();
                 return false;
             }
         }
