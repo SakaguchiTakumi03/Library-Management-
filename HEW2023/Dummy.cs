@@ -93,6 +93,33 @@ namespace HEW2023
             return userList;
         }
 
+        //public List<String> yearList()
+        //{
+        //    List<String> yearList = new List<string>()
+        //    {
+
+        //    };
+        //    return yearList;
+        //}
+
+        //public List<String> mounthList()
+        //{
+        //    List<String> mounthList = new List<string>()
+        //    {
+
+        //    };
+        //    return mounthList;
+        //}
+
+        //public List<String> dayList()
+        //{
+        //    List<String> dayList = new List<string>()
+        //    {
+
+        //    };
+        //    return dayList;
+        //}
+
         public List<List<String>> GetDBBooksInfo()
         {
             List<List<String>> dataList = new List<List<string>>();
