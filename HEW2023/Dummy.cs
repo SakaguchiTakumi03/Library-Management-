@@ -93,6 +93,33 @@ namespace HEW2023
             return userList;
         }
 
+        //public List<String> yearList()
+        //{
+        //    List<String> yearList = new List<string>()
+        //    {
+
+        //    };
+        //    return yearList;
+        //}
+
+        //public List<String> mounthList()
+        //{
+        //    List<String> mounthList = new List<string>()
+        //    {
+
+        //    };
+        //    return mounthList;
+        //}
+
+        //public List<String> dayList()
+        //{
+        //    List<String> dayList = new List<string>()
+        //    {
+
+        //    };
+        //    return dayList;
+        //}
+
         public List<List<String>> GetDBBooksInfo()
         {
             List<List<String>> dataList = new List<List<string>>();
@@ -155,7 +182,9 @@ namespace HEW2023
             catch (Exception e)
             {
                 Console.WriteLine("ConnectionDB_method_error");
-                MessageBox.Show(e.Message);
+                //MessageBox.Show(e.Message);
+                MessageBox_("SQLコネクションエラー",e.Message);
+                this.Close();
                 return false;
             }
         }
@@ -226,7 +255,7 @@ namespace HEW2023
             return dataList;
         }
 
-                public List<List<String>> GetQuerySQL(String tableName, List<String> properties, int deleteCount)
+        public List<List<String>> GetQuerySQL(String tableName, List<String> properties, int deleteCount)
         //public List<List<String>> GetQuerySQL(String tableName)
         {
             List<List<String>> dataList = new List<List<String>>();
@@ -304,10 +333,17 @@ namespace HEW2023
             }
         }
 
-        //public String foreign_key_reference(int ListCount)
-        //{
+        public List<List<String>> getCategoryList()
+        {
+            List<List<String>> categoryList = GetQuerySQL("category_list", pr());
+            return categoryList;
+        }
 
-        //}
+        public List<List<String>> getRecommendationList()
+        {
+            List<List<String>> recommendationList = GetQuerySQL("recommendation_list", pr());
+            return recommendationList;
+        }
 
         public DialogResult MessageBox_re(String title, String message)
         {
