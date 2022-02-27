@@ -87,6 +87,11 @@ namespace HEW2023
             dummy.connectionClose();
         }
 
+        private void Category_comboBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         private void category_comboBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
@@ -120,6 +125,7 @@ namespace HEW2023
             String category = "";
             String recommendation = "";
             String image_name = "";
+            String purchaseDateMessage = "";
             String purchaseDate = "";
 
             title_message_label.Text = "";
@@ -176,23 +182,68 @@ namespace HEW2023
             author = author_textBox.Text;
             category = category_comboBox.Text;
             recommendation = recommendation_comboBox.Text;
+            purchaseDateMessage = year_comboBox.Text + "年" + mounth_comboBox.Text + "月" + day_comboBox.Text + "日" ;
             purchaseDate = year_comboBox.Text + "_" + mounth_comboBox.Text + "_" + day_comboBox.Text;
 
             String messageTitle = "登録内容確認";
+            String addMessage = "上記内容で登録してよろしいでしょうか？";
             String message = "【タイトル】：" + title + "\n" +
                             "【作者】：" + author + "\n" +
                             "【カテゴリ】：" + category + "\n" +
                             "【おすすめ度】：" + recommendation + "\n" +
-                            "【購入日】：" + purchaseDate + "\n\n" +
-                            "上記内容で登録してよろしいでしょうか？";
+                            "【購入日】：" + purchaseDateMessage + "\n\n";
 
-            if (dummy.selectMessageBox(dummy.MessageBox_re(messageTitle, message)))
+            if (dummy.selectMessageBox(dummy.MessageBox_re(messageTitle, Message(message,addMessage))))
             {
+
+
+                dummy.StringDebug("DB登録処理入ったよ");
+
+                String registrationDate = dt.ToString("yyyy_mm_dd");
+                List<String> insertList = new List<String>()
+                {
+                    title,
+                    author,
+                    category_comboBox.SelectedIndex.ToString(),
+                    recommendation_comboBox.SelectedIndex.ToString(),
+                    "NULL",//image_name
+                    purchaseDate,
+                    registrationDate
+                };
+
                 //DB登録処理
+                //dummy.StringDebug(insertQuery(insertList));
+                dummy.sqlExectionQuery(insertQuery(insertList));
+                addMessage = "上記内容で登録が完了しました。";
+                dummy.MessageBox_("登録完了",Message(message,addMessage));
 
-                dummy.StringDebug("入ったよ");
+                //終了確認
+                if (dummy.selectMessageBox(dummy.MessageBox_re("確認", "追加で書籍を登録しますか？")))
+                {
+                    title_textBox.Text = "";
+                    author_textBox.Text = "";
+                    category_comboBox.SelectedIndex = -1;
+                    recommendation_comboBox.SelectedIndex = -1;
+                }
+                else
+                {
+                    this.Close();
+                }
             }
+        }
 
+        private String Message(String message ,String addMessage)
+        {
+            String insertMessage = message + addMessage;
+            return insertMessage;
+        }
+
+        private String insertQuery(List<string> insertList)
+        {
+            //List<String> insertList = insertList;
+            //String insertQuery = "INSERT INTO `books_list` (`id`, `title`, `author`, `category_id`, `recommendation_id`, `image_name`, `purchase_date`, `registration_date`, `delete_flag`, `bookmark_flag`) VALUES (NULL, 'hoge', 'ほげ', '2', '5', NULL, '2022_02_25', '2022_02_28', NULL, NULL)";
+            String insertQuery = "INSERT INTO `books_list` (`id`, `title`, `author`, `category_id`, `recommendation_id`, `image_name`, `purchase_date`, `registration_date`, `delete_flag`, `bookmark_flag`) VALUES (NULL, '" + insertList[0] + "', '" + insertList[1] + "', '" + insertList[2] + "', '" + insertList[3] + "', " + insertList[4] + ", '" + insertList[5] + "', '" + insertList[6] + "', NULL, NULL)";
+            return insertQuery;
         }
 
         private void year_comboBox_SelectedIndexChanged(object sender, EventArgs e)

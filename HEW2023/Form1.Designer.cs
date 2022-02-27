@@ -51,6 +51,7 @@ namespace HEW2023
             this.purchaseDate_message_label = new System.Windows.Forms.Label();
             this.author_message_label = new System.Windows.Forms.Label();
             this.title_message_label = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label4
@@ -124,6 +125,7 @@ namespace HEW2023
             // 
             // category_comboBox
             // 
+            this.category_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.category_comboBox.FormattingEnabled = true;
             this.category_comboBox.Location = new System.Drawing.Point(89, 97);
             this.category_comboBox.Name = "category_comboBox";
@@ -133,6 +135,7 @@ namespace HEW2023
             // 
             // recommendation_comboBox
             // 
+            this.recommendation_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.recommendation_comboBox.FormattingEnabled = true;
             this.recommendation_comboBox.Location = new System.Drawing.Point(89, 135);
             this.recommendation_comboBox.Name = "recommendation_comboBox";
@@ -272,11 +275,21 @@ namespace HEW2023
             this.title_message_label.TabIndex = 35;
             this.title_message_label.Text = "hogehoge";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(258, 120);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(79, 12);
+            this.label5.TabIndex = 36;
+            this.label5.Text = "（選択できます）";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(357, 291);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.title_message_label);
             this.Controls.Add(this.author_message_label);
             this.Controls.Add(this.purchaseDate_message_label);
@@ -330,5 +343,6 @@ namespace HEW2023
         private System.Windows.Forms.Label purchaseDate_message_label;
         private System.Windows.Forms.Label author_message_label;
         private System.Windows.Forms.Label title_message_label;
+        private System.Windows.Forms.Label label5;
     }
 }
