@@ -29,16 +29,22 @@ namespace HEW2023
 
         private void index_Load(object sender, EventArgs e)
         {
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-
             //DB接続確認処理
             if (!dummy.ConnectionDB())
             {
                 dummy.connectionClose();
-                dummy.MessageBox_("DB接続エラー","エラーが発生したためプログラムを終了します。\n再度やり直してください。");
+                dummy.MessageBox_("DB接続エラー","エラーが発生したためプログラムを終了します。\n接続を確認し、再度やり直してください。");
                 this.Close();
             }
+            else
+            {
+                dummy.StringDebug("DBに接続可能です。");
+                dummy.connectionClose();
+            }
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+
         }
 
         private void button1_Click(object sender, EventArgs e)
