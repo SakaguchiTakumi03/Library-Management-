@@ -363,7 +363,32 @@ namespace HEW2023
             }
         }
 
-        public void sqlExectionQuery(String query)
+        //public void sqlExectionQuery(String query)
+        //{
+        //    if (ConnectionDB())
+        //    {
+        //        using (MySqlTransaction transaction = con.BeginTransaction())
+        //        {
+        //            try
+        //            {
+        //                using (MySqlCommand cmd = new MySqlCommand(query,con,transaction))
+        //                {
+        //                    cmd.ExecuteNonQuery();
+        //                    transaction.Commit();
+        //                }
+        //            }
+        //            catch(Exception e)
+        //            {
+        //                transaction.Rollback();
+        //                MessageBox_("", e.ToString());
+        //                this.Close();
+        //                return;
+        //            }
+        //        }
+        //    }
+        //}
+
+        public bool sqlExectionQuery(String query)
         {
             if (ConnectionDB())
             {
@@ -371,20 +396,22 @@ namespace HEW2023
                 {
                     try
                     {
-                        using (MySqlCommand cmd = new MySqlCommand(query,con,transaction))
+                        using (MySqlCommand cmd = new MySqlCommand(query, con, transaction))
                         {
                             cmd.ExecuteNonQuery();
                             transaction.Commit();
                         }
                     }
-                    catch(Exception e)
+                    catch (Exception e)
                     {
                         transaction.Rollback();
                         MessageBox_("", e.ToString());
                         this.Close();
+                        return false;
                     }
                 }
             }
+            return true;
         }
 
         public void StringDebug(String hoge)
