@@ -36,7 +36,6 @@ namespace HEW2023
             this.label1 = new System.Windows.Forms.Label();
             this.title_textBox = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
             this.category_comboBox = new System.Windows.Forms.ComboBox();
             this.recommendation_comboBox = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -113,15 +112,6 @@ namespace HEW2023
             this.button1.Text = "登録";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(117, 250);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(129, 12);
-            this.label6.TabIndex = 21;
-            this.label6.Text = "登録確認ウィンドウを作成";
             // 
             // category_comboBox
             // 
@@ -288,7 +278,7 @@ namespace HEW2023
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(357, 291);
+            this.ClientSize = new System.Drawing.Size(357, 262);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.title_message_label);
             this.Controls.Add(this.author_message_label);
@@ -304,7 +294,6 @@ namespace HEW2023
             this.Controls.Add(this.label7);
             this.Controls.Add(this.recommendation_comboBox);
             this.Controls.Add(this.category_comboBox);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -328,7 +317,6 @@ namespace HEW2023
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox title_textBox;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox category_comboBox;
         private System.Windows.Forms.ComboBox recommendation_comboBox;
         private System.Windows.Forms.Label label7;

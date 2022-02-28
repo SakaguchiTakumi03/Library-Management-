@@ -199,13 +199,21 @@ namespace HEW2023
 
                 dummy.StringDebug("DB登録処理入ったよ");
 
+
+                int temp = -1;
+                temp = category_comboBox.SelectedIndex + 1;
+                String insertCategory = temp.ToString();
+                temp = recommendation_comboBox.SelectedIndex + 1;
+                String insertRecommendation = temp.ToString();
+                dummy.StringDebug("insertCategory:"+insertCategory);
+                dummy.StringDebug("insertRecommendation:"+insertRecommendation);
                 String registrationDate = dt.ToString("yyyy_mm_dd");
                 List<String> insertList = new List<String>()
                 {
                     title,
                     author,
-                    category_comboBox.SelectedIndex.ToString(),
-                    recommendation_comboBox.SelectedIndex.ToString(),
+                    insertCategory,
+                    insertRecommendation,
                     "NULL",//image_name
                     purchaseDate,
                     registrationDate
@@ -213,9 +221,18 @@ namespace HEW2023
 
                 //DB登録処理
                 //dummy.StringDebug(insertQuery(insertList));
-                dummy.sqlExectionQuery(insertQuery(insertList));
-                addMessage = "上記内容で登録が完了しました。";
-                dummy.MessageBox_("登録完了",Message(message,addMessage));
+
+                if (dummy.sqlExectionQuery(insertQuery(insertList)))
+                {
+                    addMessage = "上記内容で登録が完了しました。";
+                    dummy.MessageBox_("登録完了", Message(message, addMessage));
+                }
+                else
+                {
+                    dummy.StringDebug("form1のquery実行にてエラー発生。");
+                    this.Close();
+                    return;
+                }
 
                 //終了確認
                 if (dummy.selectMessageBox(dummy.MessageBox_re("確認", "追加で書籍を登録しますか？")))
