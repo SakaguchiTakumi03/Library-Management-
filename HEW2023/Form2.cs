@@ -129,11 +129,19 @@ namespace HEW2023
                 //処理
                 if (dummy.selectMessageBox(dummy.MessageBox_re(title, message)))
                 {
-                    dummy.sqlExectionQuery(notBookmarkQuery(selectedRowIndex));
-                    title = "削除完了";
-                    message = "選択された「" + selectedRowIndex + "」を削除しました。";
-                    dummy.MessageBox_(title, message);
-                    this.Close();
+                    if (dummy.sqlExectionQuery(notBookmarkQuery(selectedRowIndex)))
+                    {
+                        title = "削除完了";
+                        message = "選択された「" + selectedRowIndex + "」を削除しました。";
+                        dummy.MessageBox_(title, message);
+                        this.Close();
+                    }
+                    else
+                    {
+                        dummy.StringDebug("form2のquery実行にてエラー発生。");
+                        this.Close();
+                        return;
+                    }
                 }
             }
             else
@@ -144,11 +152,19 @@ namespace HEW2023
                 //処理
                 if (dummy.selectMessageBox(dummy.MessageBox_re(title, message)))
                 {
-                    dummy.sqlExectionQuery(bookmarkQuery(selectedRowIndex));
-                    title = "登録完了";
-                    message = "選択された「" + selectedRowIndex + "」を登録しました。";
-                    dummy.MessageBox_(title, message);
-                    this.Close();
+                    if (dummy.sqlExectionQuery(bookmarkQuery(selectedRowIndex)))
+                    {
+                        title = "登録完了";
+                        message = "選択された「" + selectedRowIndex + "」を登録しました。";
+                        dummy.MessageBox_(title, message);
+                        this.Close();
+                    }
+                    else
+                    {
+                        dummy.StringDebug("form2のquery実行にてエラー発生。");
+                        this.Close();
+                        return;
+                    }
                 }
             }
             dummy.connectionClose();

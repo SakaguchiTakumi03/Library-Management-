@@ -25,11 +25,26 @@ namespace HEW2023
         public Form5 f5 = null;
         public Form6 f6 = null;
         public login login = null;
+        Dummy dummy = new Dummy();
 
         private void index_Load(object sender, EventArgs e)
         {
+            //DB接続確認処理
+            if (!dummy.ConnectionDB())
+            {
+                dummy.connectionClose();
+                dummy.MessageBox_("DB接続エラー","エラーが発生したためプログラムを終了します。\n接続を確認し、再度やり直してください。");
+                this.Close();
+            }
+            else
+            {
+                dummy.StringDebug("DBに接続可能です。");
+                dummy.connectionClose();
+            }
+
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
+
         }
 
         private void button1_Click(object sender, EventArgs e)
