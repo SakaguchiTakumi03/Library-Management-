@@ -156,20 +156,37 @@ namespace HEW2023
                 dummy.StringDebug("カテゴリの値が変わっている「" + category_comboBox.SelectedIndex.ToString() + "」");
             }
 
-            if (inputData == "")
+            //if (inputData == "")
+            //{
+            //    //dataList = dummy.GetQuerySQL("books_list", dummy.books_pr());
+            //    //dummy.StringDebug("通過１");
+            //}
+            //else
+            //{
+            //    if (subSelectList.Count == 0)
+            //    {
+            //        dataList = dummy.SearchQuerySQL(selectCoulumnsData, inputData);
+            //        dummy.StringDebug("通過２");
+            //    }
+            //    else
+            //    {
+            //        dataList = dummy.SearchQuerySQL(selectCoulumnsData, inputData, subSelectList);
+            //        dummy.StringDebug("通過３");
+            //    }
+            //}
+
+            //コンボボックス選択確認
+            if (subSelectList.Count == 0)
             {
-                //dataList = dummy.GetQuerySQL("books_list", dummy.books_pr());
+                //通常の検索
+                dataList = dummy.GetQuerySQL("books_list", dummy.books_pr());
+                dummy.StringDebug("通過１");
             }
             else
             {
-                if (subSelectList.Count == 0)
-                {
-                    dataList = dummy.SearchQuerySQL(selectCoulumnsData, inputData);
-                }
-                else
-                {
-                    dataList = dummy.SearchQuerySQL(selectCoulumnsData, inputData, subSelectList);
-                }
+                //コンボボックスが選択されている際
+                dataList = dummy.SearchQuerySQL(selectCoulumnsData, inputData, subSelectList);
+                dummy.StringDebug("通過２");
             }
 
             
