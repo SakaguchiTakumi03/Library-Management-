@@ -45,6 +45,7 @@ namespace HEW2023
             List<List<String>> categoryList = new List<List<string>>(dummy.GetQuerySQL("category_list", dummy.pr()));
             List<List<String>> recommendationList = new List<List<string>>(dummy.GetQuerySQL("recommendation_list", dummy.pr()));
             List<String> columnsList = new List<string>(dummy.books_list());
+            List<int> bookmarksList = new List<int>();
 
             columnsList.RemoveRange(columnsList.Count - deleteNum, deleteNum);
 
@@ -52,56 +53,67 @@ namespace HEW2023
             int columnsCount = columnsList.Count();
             int originalDataCount = originalDataList.Count();
 
+
+
             for (int i = 0; i < columnsCount; i++)
             {
                 dt.Columns.Add(columnsList[i]);
             }
 
-            for(int j = 0; j < dataCount; j++)
+            int generateCount;
+
+            for (int j = 0; j < dataCount; j++)
             {
                 DataRow dr = dt.NewRow();
-                for(int k = 0; k < columnsCount; k++)
+                if (originalDataList[j][8] != "1")
                 {
-                    int index = 0;
-                    if (k == 3)
+                    for (int k = 0; k < columnsCount; k++)
                     {
-                        index = Int32.Parse(dataList[j][k]);
-                        dr[columnsList[k].ToString()] = categoryList[index-1][1];
-                    }
-                    else if (k == 4)
-                    {
-                        index = Int32.Parse(dataList[j][k]);
-                        dr[columnsList[k].ToString()] = recommendationList[index-1][1];
-                    }
-                    else if (k == 5)
-                    {
-                        if(dataList[j][k] == "")
+                        int index = 0;
+                        if (k == 3)
                         {
-                            dr[columnsList[k].ToString()] = "データがありません";
+                            index = Int32.Parse(dataList[j][k]);
+                            dr[columnsList[k].ToString()] = categoryList[index - 1][1];
+                        }
+                        else if (k == 4)
+                        {
+                            index = Int32.Parse(dataList[j][k]);
+                            dr[columnsList[k].ToString()] = recommendationList[index - 1][1];
+                        }
+                        else if (k == 5)
+                        {
+                            if (dataList[j][k] == "")
+                            {
+                                dr[columnsList[k].ToString()] = "データがありません";
+                            }
+                            else
+                            {
+                                dr[columnsList[k].ToString()] = "あります。";
+                            }
                         }
                         else
                         {
-                            dr[columnsList[k].ToString()] = "あります。";
+                            dr[columnsList[k].ToString()] = dataList[j][k];
                         }
                     }
-                    else
+                    dt.Rows.Add(dr);
+
+                    if (originalDataList[j][9].Equals("1"))
                     {
-                        dr[columnsList[k].ToString()] = dataList[j][k];
+                        bookmarksList.Add(j);
                     }
                 }
-                dt.Rows.Add(dr);
+
             }
             DataGridView.DataSource = dt;
             dummy.connectionClose();
 
-            //ブックマークされている行の背景色を変更
-            for(int i = 0; i<originalDataCount; i++)
-            {
-                if (originalDataList[i][9].Equals("1"))
-                {
-                    DataGridView.Rows[i].DefaultCellStyle.BackColor = Color.Aqua;//背景色はここで変更する
-                }
-            }
+            ////ブックマークされている行の背景色を変更
+            //foreach (int i in bookmarksList)
+            //{
+            //    DataGridView.Rows[i].DefaultCellStyle.BackColor = Color.Cyan;//背景色はここで変更する
+            //    dummy.intDebug(i);
+            //}
 
             //DataGridViewのセルの存在を確認
             if (dummy.gridCheck(DataGridView, this.Text))
@@ -179,7 +191,7 @@ namespace HEW2023
 
         private String notBookmarkQuery(int selectBookId)
         {
-            String bookmarkQuery = "UPDATE `books_list` SET `bookmark_flag` = '0' WHERE `books_list`.`id` = " + selectBookId.ToString();
+            String bookmarkQuery = "UPDATE `books_list` SET `bookmark_flag` = NULL WHERE `books_list`.`id` = " + selectBookId.ToString();
             return bookmarkQuery;
         }
 

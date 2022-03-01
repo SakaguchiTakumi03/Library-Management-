@@ -92,12 +92,8 @@ namespace HEW2023
             e.Handled = true;
         }
 
-        int pushCount;
-
         private void button1_Click(object sender, EventArgs e)
         {
-            pushCount++;
-
             //MySQLに接続を確立
             if (!dummy.ConnectionDB())
             {
@@ -118,6 +114,10 @@ namespace HEW2023
             String inputData = "";
             String selectCoulumnsData = "";
 
+            List<String> subSelectList = new List<string>();
+
+            //dummy.StringDebug(subSelectList.Count.ToString() + "-----------------------------------------------------");
+
             //入力仕分け処理。
             if (title_textBox.Text != "")
             {
@@ -130,17 +130,46 @@ namespace HEW2023
                 selectCoulumnsData = "author";
             }
 
+            //dummy.intDebug(category_comboBox.SelectedIndex);
+
+            if(category_comboBox.SelectedIndex > -1)
+            {
+                subSelectList.Add("category_id = "+( category_comboBox.SelectedIndex + 1) + " ".ToString());
+            }
+            if (recommendation_comboBox.SelectedIndex > -1)
+            {
+                subSelectList.Add("recommendation_id = "+( recommendation_comboBox.SelectedIndex + 1) + " ".ToString());
+            }
+
+            //dummy.StringDebug(subSelectList.Count.ToString() + "-----------------------------------------------------");
+
             int deleteNum = 3;
 
             List<List<String>> dataList = new List<List<string>>();
 
+            int selectedCategoryIndex = category_comboBox.SelectedIndex;
+            int selectedRecommendationIndex = recommendation_comboBox.SelectedIndex;
+
+            if (selectedCategoryIndex > -1)
+            {
+                //dummy.StringDebug("カテゴリの値が変わっている「"+selectedCategorySelectedIndex+"」");
+                dummy.StringDebug("カテゴリの値が変わっている「" + category_comboBox.SelectedIndex.ToString() + "」");
+            }
+
             if (inputData == "")
             {
-                dataList = dummy.GetQuerySQL("books_list", dummy.books_pr(), deleteNum);
+                //dataList = dummy.GetQuerySQL("books_list", dummy.books_pr());
             }
             else
             {
-                dataList = dummy.SearchQuerySQL(selectCoulumnsData,inputData);
+                if (subSelectList.Count == 0)
+                {
+                    dataList = dummy.SearchQuerySQL(selectCoulumnsData, inputData);
+                }
+                else
+                {
+                    dataList = dummy.SearchQuerySQL(selectCoulumnsData, inputData, subSelectList);
+                }
             }
 
             
@@ -218,7 +247,17 @@ namespace HEW2023
             DataGridView.Columns[3].Width = 70;
             DataGridView.Columns[5].Width = 65;
 
-            dummy.MessageBox_("検索結果", "表示件数「"+(rowsCount-1)+"」");
+            bool resurt = checkBox.Checked;
+
+            if (resurt)
+            {
+                dummy.MessageBox_("検索結果", "表示件数「" + (rowsCount - 1) + "」");
+                dummy.StringDebug("確認にチェックされています。");
+            }
+            else
+            {
+                dummy.StringDebug("確認にチェックされていません。");
+            }
         }
     }
 }

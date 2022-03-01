@@ -40,6 +40,7 @@ namespace HEW2023
             this.title_radioButton = new System.Windows.Forms.RadioButton();
             this.author_radioButton = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -47,7 +48,7 @@ namespace HEW2023
             // DataGridView
             // 
             this.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridView.Location = new System.Drawing.Point(12, 12);
+            this.DataGridView.Location = new System.Drawing.Point(12, 34);
             this.DataGridView.Name = "DataGridView";
             this.DataGridView.RowTemplate.Height = 21;
             this.DataGridView.Size = new System.Drawing.Size(545, 311);
@@ -56,7 +57,7 @@ namespace HEW2023
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(292, 387);
+            this.label4.Location = new System.Drawing.Point(287, 401);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(57, 12);
             this.label4.TabIndex = 27;
@@ -65,7 +66,7 @@ namespace HEW2023
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(292, 354);
+            this.label3.Location = new System.Drawing.Point(287, 368);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(39, 12);
             this.label3.TabIndex = 25;
@@ -73,21 +74,21 @@ namespace HEW2023
             // 
             // author_textBox
             // 
-            this.author_textBox.Location = new System.Drawing.Point(110, 380);
+            this.author_textBox.Location = new System.Drawing.Point(105, 394);
             this.author_textBox.Name = "author_textBox";
             this.author_textBox.Size = new System.Drawing.Size(160, 19);
             this.author_textBox.TabIndex = 22;
             // 
             // title_textBox
             // 
-            this.title_textBox.Location = new System.Drawing.Point(110, 348);
+            this.title_textBox.Location = new System.Drawing.Point(105, 362);
             this.title_textBox.Name = "title_textBox";
             this.title_textBox.Size = new System.Drawing.Size(160, 19);
             this.title_textBox.TabIndex = 20;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(448, 418);
+            this.button1.Location = new System.Drawing.Point(444, 434);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 28;
@@ -98,7 +99,7 @@ namespace HEW2023
             // category_comboBox
             // 
             this.category_comboBox.FormattingEnabled = true;
-            this.category_comboBox.Location = new System.Drawing.Point(376, 348);
+            this.category_comboBox.Location = new System.Drawing.Point(371, 362);
             this.category_comboBox.Name = "category_comboBox";
             this.category_comboBox.Size = new System.Drawing.Size(160, 20);
             this.category_comboBox.TabIndex = 35;
@@ -107,7 +108,7 @@ namespace HEW2023
             // recommendation_comboBox
             // 
             this.recommendation_comboBox.FormattingEnabled = true;
-            this.recommendation_comboBox.Location = new System.Drawing.Point(376, 382);
+            this.recommendation_comboBox.Location = new System.Drawing.Point(371, 396);
             this.recommendation_comboBox.Name = "recommendation_comboBox";
             this.recommendation_comboBox.Size = new System.Drawing.Size(160, 20);
             this.recommendation_comboBox.TabIndex = 36;
@@ -141,16 +142,27 @@ namespace HEW2023
             // 
             this.panel1.Controls.Add(this.title_radioButton);
             this.panel1.Controls.Add(this.author_radioButton);
-            this.panel1.Location = new System.Drawing.Point(28, 332);
+            this.panel1.Location = new System.Drawing.Point(23, 346);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(65, 86);
             this.panel1.TabIndex = 44;
+            // 
+            // checkBox
+            // 
+            this.checkBox.AutoSize = true;
+            this.checkBox.Location = new System.Drawing.Point(461, 12);
+            this.checkBox.Name = "checkBox";
+            this.checkBox.Size = new System.Drawing.Size(96, 16);
+            this.checkBox.TabIndex = 45;
+            this.checkBox.Text = "表示件数通知";
+            this.checkBox.UseVisualStyleBackColor = true;
             // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(573, 455);
+            this.ClientSize = new System.Drawing.Size(573, 475);
+            this.Controls.Add(this.checkBox);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.recommendation_comboBox);
             this.Controls.Add(this.category_comboBox);
@@ -184,5 +196,6 @@ namespace HEW2023
         private System.Windows.Forms.RadioButton title_radioButton;
         private System.Windows.Forms.RadioButton author_radioButton;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.CheckBox checkBox;
     }
 }

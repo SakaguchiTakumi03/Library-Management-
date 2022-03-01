@@ -93,33 +93,6 @@ namespace HEW2023
             return userList;
         }
 
-        //public List<String> yearList()
-        //{
-        //    List<String> yearList = new List<string>()
-        //    {
-
-        //    };
-        //    return yearList;
-        //}
-
-        //public List<String> mounthList()
-        //{
-        //    List<String> mounthList = new List<string>()
-        //    {
-
-        //    };
-        //    return mounthList;
-        //}
-
-        //public List<String> dayList()
-        //{
-        //    List<String> dayList = new List<string>()
-        //    {
-
-        //    };
-        //    return dayList;
-        //}
-
         public List<List<String>> GetDBBooksInfo()
         {
             List<List<String>> dataList = new List<List<string>>();
@@ -331,6 +304,100 @@ namespace HEW2023
             //{
             //    con.Close();
             //}
+            return dataList;
+        }
+
+        public List<List<String>> SearchQuerySQL(String selectColumns, String inputData, List<String> subSelectList)
+        //public List<List<String>> GetQuerySQL(String tableName)
+        {
+            List<List<String>> dataList = new List<List<String>>();
+            //String[] selectArr = select.Split(',');
+            //int countSelectArr = selectArr.Length;
+            //if (countSelectArr > 1)
+            //{
+            //    //for (int i = 0; i < countSelectList; i++)
+            //    //{
+
+            //    //}
+            //    StringDebug("LIstの要素複数");
+            //}
+            //else
+            //{
+            //    StringDebug("LIstの要素一つ");
+            //    //select = selectDataList[0];
+            //}
+
+            try
+            {
+                int count = 0;
+                String query = "SELECT * FROM `books_list` WHERE ";
+                //余裕があらばメソッド作ること。
+                if (inputData == "")
+                {
+                    for(int i = 0; i < subSelectList.Count; i++)
+                    {
+                        switch (i)
+                        {
+                            case 0:
+                                query += subSelectList[i];
+                                break;
+                            case 1:
+                                query += "AND " + subSelectList[i];
+                                break;
+                        }
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < subSelectList.Count; i++)
+                    {
+                        switch (i)
+                        {
+                            case 0:
+                                query += subSelectList[i];
+                                break;
+                            case 1:
+                                query += "AND " + subSelectList[i];
+                                break;
+                        }
+                    }
+                    query += " AND " + selectColumns + " LIKE '%" + inputData + "%'";
+                }
+
+
+                StringDebug(query);
+
+                MySqlCommand cmd = new MySqlCommand(query, con);
+
+                this.da.SelectCommand = cmd;
+                this.da.Fill(this.dt);
+
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    List<string> columnsName = books_pr();
+                    //List<string> columnsName = list();
+
+                    int listCount = columnsName.Count();
+
+                    while (reader.Read())
+                    {
+                        List<String> columnsList = new List<string>();
+                        for (int i = 0; i < listCount; i++)
+                        {
+                            columnsList.Add(reader[columnsName[i]].ToString());
+                        }
+                        dataList.Add(columnsList);
+                    }
+                    reader.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("SearchQuerySQL_error");
+                MessageBox.Show(e.Message);
+            }
+
             return dataList;
         }
 
