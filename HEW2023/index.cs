@@ -24,6 +24,7 @@ namespace HEW2023
         public Form4 f4 = null;
         public Form5 f5 = null;
         public Form6 f6 = null;
+        public Form8 f8 = null;
         public login login = null;
         Dummy dummy = new Dummy();
 
@@ -155,6 +156,19 @@ namespace HEW2023
                     button7.Visible = false;
                     Console.WriteLine("ログインボタン非表示");
                 };
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            if (this.f8 == null || this.f8.IsDisposed)
+            {
+                this.f8 = new Form8();
+                f8.Show();
+            }
+            else
+            {
+                f8.WindowState = FormWindowState.Normal;
             }
         }
     }

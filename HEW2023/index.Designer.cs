@@ -29,15 +29,52 @@ namespace HEW2023
         /// </summary>
         private void InitializeComponent()
         {
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(955, 507);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(283, 29);
+            this.button7.TabIndex = 6;
+            this.button7.Text = "ログイン";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Visible = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.button8.FlatAppearance.BorderSize = 0;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.Location = new System.Drawing.Point(-1, -3);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(30, 29);
+            this.button8.TabIndex = 7;
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button9
+            // 
+            this.button9.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button9.Font = new System.Drawing.Font("ＭＳ Ｐ明朝", 34.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.button9.Image = global::HEW2023.Properties.Resources.black_QR;
+            this.button9.Location = new System.Drawing.Point(955, 205);
+            this.button9.Margin = new System.Windows.Forms.Padding(2);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(283, 297);
+            this.button9.TabIndex = 8;
+            this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button4
             // 
@@ -117,34 +154,12 @@ namespace HEW2023
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(337, 656);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(283, 29);
-            this.button7.TabIndex = 6;
-            this.button7.Text = "ログイン";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Visible = false;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Location = new System.Drawing.Point(-1, -3);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(30, 29);
-            this.button8.TabIndex = 7;
-            this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
             // index
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(967, 684);
+            this.ClientSize = new System.Drawing.Size(1260, 684);
+            this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button4);
@@ -171,6 +186,7 @@ namespace HEW2023
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button7;
         public System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
     }
 }
 

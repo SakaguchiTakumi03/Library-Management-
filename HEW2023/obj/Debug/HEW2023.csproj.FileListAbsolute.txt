@@ -49,3 +49,8 @@ C:\makeProgram\C#\HEW2023\HEW2023\obj\Debug\HEW2023.Form6.resources
 C:\makeProgram\C#\HEW2023\HEW2023\obj\Debug\HEW2023.login.resources
 C:\makeProgram\C#\HEW2023\HEW2023\obj\Debug\HEW2023.Form7.resources
 C:\makeProgram\C#\HEW2023\HEW2023\obj\Debug\HEW2023.csproj.AssemblyReference.cache
+C:\makeProgram\C#\HEW2023\HEW2023\bin\Debug\zxing.dll
+C:\makeProgram\C#\HEW2023\HEW2023\bin\Debug\zxing.presentation.dll
+C:\makeProgram\C#\HEW2023\HEW2023\bin\Debug\zxing.xml
+C:\makeProgram\C#\HEW2023\HEW2023\bin\Debug\zxing.presentation.xml
+C:\makeProgram\C#\HEW2023\HEW2023\obj\Debug\HEW2023.Form8.resources
