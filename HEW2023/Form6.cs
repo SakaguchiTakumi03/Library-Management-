@@ -30,7 +30,7 @@ namespace HEW2023
             //MySQLに接続を確立
             if (!dummy.ConnectionDB())
             {
-                Console.WriteLine("「Form2」でDBのコネクションが確率出来ませんでした");
+                Console.WriteLine("「Form6」でDBのコネクションが確率出来ませんでした");
                 this.Close();
             }
 
@@ -76,9 +76,6 @@ namespace HEW2023
                 if (originalDataList[j][8] != "1")
                 {
                     dataIndexList.Add(j+1);
-                    //DataRow dr = dt.NewRow();
-                    //dummy.StringDebug("delete_flag_0_"+(j+1));
-                    //ColumnsIndex
                     for (int k = 0; k < columnsCount; k++)
                     {
                         int index = 0;
@@ -115,24 +112,17 @@ namespace HEW2023
                     continue;
                     dummy.StringDebug("delete_flag_1_" + (j+1));
                 }
-                //// dataGridView の すべてのカラムで ソート を 無効化
-                //foreach (DataGridViewColumn column in DataGridView.Columns)
-                //{
-                //    column.SortMode = DataGridViewColumnSortMode.NotSortable;
-                //}
             }
             DataGridView.DataSource = dt;
             dummy.connectionClose();
+
+            //ID部分の列を削除
             dt.Columns.RemoveAt(0);
 
+            //列の幅を指定
             DataGridView.Columns[0].Width = 265;
             DataGridView.Columns[3].Width = 70;
             DataGridView.Columns[5].Width = 65;
-
-            foreach (int i in dataIndexList)
-            {
-                dummy.intDebug(i);
-            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -140,14 +130,14 @@ namespace HEW2023
             //MySQLに接続を確立
             if (!dummy.ConnectionDB())
             {
-                Console.WriteLine("「Form2」でDBのコネクションが確率出来ませんでした");
+                Console.WriteLine("「Form6」でDBのコネクションが確率出来ませんでした");
+                dummy.MessageBox_("不明なエラー", "処理を行えないため終了します。");
                 this.Close();
             }
             List<List<String>> originalDataList = new List<List<string>>(dummy.GetQuerySQL("books_list", dummy.books_pr()));
 
             int selectedRowIndex = DataGridView.CurrentCell.RowIndex;
             int selectId = dataIndexList[selectedRowIndex];
-            dummy.MessageBox_(selectId.ToString() + "_selectId", selectedRowIndex.ToString() + "_selectRowIndex");
             String selectTitle = originalDataList[selectId-1][1];
             String title = "削除しますか？";
             String message = "選択された「" + selectTitle + "」を削除しますか？";
@@ -170,7 +160,6 @@ namespace HEW2023
                 }
             }
         }
-
         private String deleteQuery(int selectBookId)
         {
             String deleteQuery = "UPDATE `books_list` SET `delete_flag` = '1' WHERE `books_list`.`id` = " + selectBookId.ToString();

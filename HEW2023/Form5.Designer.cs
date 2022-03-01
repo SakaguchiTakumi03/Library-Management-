@@ -29,37 +29,37 @@ namespace HEW2023
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DataGridView = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.author_textBox = new System.Windows.Forms.TextBox();
+            this.title_textBox = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.category_comboBox = new System.Windows.Forms.ComboBox();
+            this.recommendation_comboBox = new System.Windows.Forms.ComboBox();
+            this.title_radioButton = new System.Windows.Forms.RadioButton();
+            this.author_radioButton = new System.Windows.Forms.RadioButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBox = new System.Windows.Forms.CheckBox();
+            this.categoryReset_button = new System.Windows.Forms.Button();
+            this.recommendationReset_button = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // DataGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 21;
-            this.dataGridView1.Size = new System.Drawing.Size(545, 247);
-            this.dataGridView1.TabIndex = 0;
+            this.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGridView.Location = new System.Drawing.Point(12, 34);
+            this.DataGridView.Name = "DataGridView";
+            this.DataGridView.RowTemplate.Height = 21;
+            this.DataGridView.Size = new System.Drawing.Size(656, 311);
+            this.DataGridView.TabIndex = 0;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(288, 331);
+            this.label4.Location = new System.Drawing.Point(287, 401);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(57, 12);
             this.label4.TabIndex = 27;
@@ -68,136 +68,141 @@ namespace HEW2023
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(288, 295);
+            this.label3.Location = new System.Drawing.Point(287, 368);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(39, 12);
             this.label3.TabIndex = 25;
             this.label3.Text = "カテゴリ";
             // 
-            // label2
+            // author_textBox
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 329);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 12);
-            this.label2.TabIndex = 23;
-            this.label2.Text = "作者名";
+            this.author_textBox.Location = new System.Drawing.Point(105, 394);
+            this.author_textBox.Name = "author_textBox";
+            this.author_textBox.Size = new System.Drawing.Size(160, 19);
+            this.author_textBox.TabIndex = 22;
             // 
-            // textBox2
+            // title_textBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(96, 326);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(160, 19);
-            this.textBox2.TabIndex = 22;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 292);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 12);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "タイトル";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(96, 289);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(160, 19);
-            this.textBox1.TabIndex = 20;
+            this.title_textBox.Location = new System.Drawing.Point(105, 362);
+            this.title_textBox.Name = "title_textBox";
+            this.title_textBox.Size = new System.Drawing.Size(160, 19);
+            this.title_textBox.TabIndex = 20;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(457, 415);
+            this.button1.Font = new System.Drawing.Font("MS UI Gothic", 12F);
+            this.button1.Location = new System.Drawing.Point(495, 434);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(137, 40);
             this.button1.TabIndex = 28;
             this.button1.Text = "検索";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // radioButton1
+            // category_comboBox
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(458, 365);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(74, 16);
-            this.radioButton1.TabIndex = 30;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "ブックマーク";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.category_comboBox.FormattingEnabled = true;
+            this.category_comboBox.Location = new System.Drawing.Point(371, 362);
+            this.category_comboBox.Name = "category_comboBox";
+            this.category_comboBox.Size = new System.Drawing.Size(160, 20);
+            this.category_comboBox.TabIndex = 35;
+            this.category_comboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.category_comboBox_KeyPress);
             // 
-            // label5
+            // recommendation_comboBox
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 365);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(77, 12);
-            this.label5.TabIndex = 32;
-            this.label5.Text = "購入日（開始）";
+            this.recommendation_comboBox.FormattingEnabled = true;
+            this.recommendation_comboBox.Location = new System.Drawing.Point(371, 396);
+            this.recommendation_comboBox.Name = "recommendation_comboBox";
+            this.recommendation_comboBox.Size = new System.Drawing.Size(160, 20);
+            this.recommendation_comboBox.TabIndex = 36;
+            this.recommendation_comboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.recommendation_comboBox_KeyPress);
             // 
-            // textBox5
+            // title_radioButton
             // 
-            this.textBox5.Location = new System.Drawing.Point(96, 362);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 19);
-            this.textBox5.TabIndex = 31;
+            this.title_radioButton.AutoSize = true;
+            this.title_radioButton.Checked = true;
+            this.title_radioButton.Location = new System.Drawing.Point(3, 20);
+            this.title_radioButton.Name = "title_radioButton";
+            this.title_radioButton.Size = new System.Drawing.Size(58, 16);
+            this.title_radioButton.TabIndex = 41;
+            this.title_radioButton.TabStop = true;
+            this.title_radioButton.Text = "タイトル";
+            this.title_radioButton.UseVisualStyleBackColor = true;
+            this.title_radioButton.CheckedChanged += new System.EventHandler(this.title_radioButton_CheckedChanged);
             // 
-            // label6
+            // author_radioButton
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(196, 365);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(105, 12);
-            this.label6.TabIndex = 34;
-            this.label6.Text = "　～　購入日（終了）";
+            this.author_radioButton.AutoSize = true;
+            this.author_radioButton.Location = new System.Drawing.Point(3, 51);
+            this.author_radioButton.Name = "author_radioButton";
+            this.author_radioButton.Size = new System.Drawing.Size(59, 16);
+            this.author_radioButton.TabIndex = 42;
+            this.author_radioButton.Text = "作者名";
+            this.author_radioButton.UseVisualStyleBackColor = true;
+            this.author_radioButton.CheckedChanged += new System.EventHandler(this.author_radioButton_CheckedChanged);
             // 
-            // textBox6
+            // panel1
             // 
-            this.textBox6.Location = new System.Drawing.Point(307, 362);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 19);
-            this.textBox6.TabIndex = 33;
+            this.panel1.Controls.Add(this.title_radioButton);
+            this.panel1.Controls.Add(this.author_radioButton);
+            this.panel1.Location = new System.Drawing.Point(23, 346);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(65, 86);
+            this.panel1.TabIndex = 44;
             // 
-            // comboBox1
+            // checkBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(372, 289);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(160, 20);
-            this.comboBox1.TabIndex = 35;
+            this.checkBox.AutoSize = true;
+            this.checkBox.Location = new System.Drawing.Point(572, 12);
+            this.checkBox.Name = "checkBox";
+            this.checkBox.Size = new System.Drawing.Size(96, 16);
+            this.checkBox.TabIndex = 45;
+            this.checkBox.Text = "表示件数通知";
+            this.checkBox.UseVisualStyleBackColor = true;
             // 
-            // comboBox2
+            // categoryReset_button
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(372, 326);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(160, 20);
-            this.comboBox2.TabIndex = 36;
+            this.categoryReset_button.Location = new System.Drawing.Point(546, 360);
+            this.categoryReset_button.Name = "categoryReset_button";
+            this.categoryReset_button.Size = new System.Drawing.Size(103, 23);
+            this.categoryReset_button.TabIndex = 46;
+            this.categoryReset_button.Text = "カテゴリ クリア";
+            this.categoryReset_button.UseVisualStyleBackColor = true;
+            this.categoryReset_button.Click += new System.EventHandler(this.categoryReset_button_Click);
+            // 
+            // recommendationReset_button
+            // 
+            this.recommendationReset_button.Location = new System.Drawing.Point(546, 394);
+            this.recommendationReset_button.Name = "recommendationReset_button";
+            this.recommendationReset_button.Size = new System.Drawing.Size(103, 23);
+            this.recommendationReset_button.TabIndex = 47;
+            this.recommendationReset_button.Text = "おすすめ度 クリア";
+            this.recommendationReset_button.UseVisualStyleBackColor = true;
+            this.recommendationReset_button.Click += new System.EventHandler(this.recommendationReset_button_Click);
             // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(573, 625);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.radioButton1);
+            this.ClientSize = new System.Drawing.Size(683, 486);
+            this.Controls.Add(this.recommendationReset_button);
+            this.Controls.Add(this.categoryReset_button);
+            this.Controls.Add(this.checkBox);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.recommendation_comboBox);
+            this.Controls.Add(this.category_comboBox);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.author_textBox);
+            this.Controls.Add(this.title_textBox);
+            this.Controls.Add(this.DataGridView);
             this.Name = "Form5";
             this.Text = "書籍検索";
             this.Load += new System.EventHandler(this.Form5_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,20 +210,19 @@ namespace HEW2023
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView DataGridView;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox author_textBox;
+        private System.Windows.Forms.TextBox title_textBox;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox category_comboBox;
+        private System.Windows.Forms.ComboBox recommendation_comboBox;
+        private System.Windows.Forms.RadioButton title_radioButton;
+        private System.Windows.Forms.RadioButton author_radioButton;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.CheckBox checkBox;
+        private System.Windows.Forms.Button categoryReset_button;
+        private System.Windows.Forms.Button recommendationReset_button;
     }
 }

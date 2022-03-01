@@ -38,6 +38,7 @@ namespace HEW2023
             if (!dummy.ConnectionDB())
             {
                 Console.WriteLine("「Form1」でDBのコネクションが確率出来ませんでした");
+                dummy.MessageBox_("不明なエラー", "処理を行えないため終了します。");
                 this.Close();
             }
 
@@ -85,11 +86,6 @@ namespace HEW2023
                 mounthList.Add(i);
             }
             dummy.connectionClose();
-        }
-
-        private void Category_comboBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
         private void category_comboBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -195,10 +191,7 @@ namespace HEW2023
 
             if (dummy.selectMessageBox(dummy.MessageBox_re(messageTitle, Message(message,addMessage))))
             {
-
-
                 dummy.StringDebug("DB登録処理入ったよ");
-
 
                 int temp = -1;
                 temp = category_comboBox.SelectedIndex + 1;
