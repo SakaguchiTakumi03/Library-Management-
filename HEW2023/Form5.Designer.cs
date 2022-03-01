@@ -41,6 +41,8 @@ namespace HEW2023
             this.author_radioButton = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.checkBox = new System.Windows.Forms.CheckBox();
+            this.categoryReset_button = new System.Windows.Forms.Button();
+            this.recommendationReset_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -51,7 +53,7 @@ namespace HEW2023
             this.DataGridView.Location = new System.Drawing.Point(12, 34);
             this.DataGridView.Name = "DataGridView";
             this.DataGridView.RowTemplate.Height = 21;
-            this.DataGridView.Size = new System.Drawing.Size(545, 311);
+            this.DataGridView.Size = new System.Drawing.Size(656, 311);
             this.DataGridView.TabIndex = 0;
             // 
             // label4
@@ -88,9 +90,10 @@ namespace HEW2023
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(444, 434);
+            this.button1.Font = new System.Drawing.Font("MS UI Gothic", 12F);
+            this.button1.Location = new System.Drawing.Point(495, 434);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(137, 40);
             this.button1.TabIndex = 28;
             this.button1.Text = "検索";
             this.button1.UseVisualStyleBackColor = true;
@@ -150,18 +153,40 @@ namespace HEW2023
             // checkBox
             // 
             this.checkBox.AutoSize = true;
-            this.checkBox.Location = new System.Drawing.Point(461, 12);
+            this.checkBox.Location = new System.Drawing.Point(572, 12);
             this.checkBox.Name = "checkBox";
             this.checkBox.Size = new System.Drawing.Size(96, 16);
             this.checkBox.TabIndex = 45;
             this.checkBox.Text = "表示件数通知";
             this.checkBox.UseVisualStyleBackColor = true;
             // 
+            // categoryReset_button
+            // 
+            this.categoryReset_button.Location = new System.Drawing.Point(546, 360);
+            this.categoryReset_button.Name = "categoryReset_button";
+            this.categoryReset_button.Size = new System.Drawing.Size(103, 23);
+            this.categoryReset_button.TabIndex = 46;
+            this.categoryReset_button.Text = "カテゴリ クリア";
+            this.categoryReset_button.UseVisualStyleBackColor = true;
+            this.categoryReset_button.Click += new System.EventHandler(this.categoryReset_button_Click);
+            // 
+            // recommendationReset_button
+            // 
+            this.recommendationReset_button.Location = new System.Drawing.Point(546, 394);
+            this.recommendationReset_button.Name = "recommendationReset_button";
+            this.recommendationReset_button.Size = new System.Drawing.Size(103, 23);
+            this.recommendationReset_button.TabIndex = 47;
+            this.recommendationReset_button.Text = "おすすめ度 クリア";
+            this.recommendationReset_button.UseVisualStyleBackColor = true;
+            this.recommendationReset_button.Click += new System.EventHandler(this.recommendationReset_button_Click);
+            // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(573, 475);
+            this.ClientSize = new System.Drawing.Size(683, 486);
+            this.Controls.Add(this.recommendationReset_button);
+            this.Controls.Add(this.categoryReset_button);
             this.Controls.Add(this.checkBox);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.recommendation_comboBox);
@@ -197,5 +222,7 @@ namespace HEW2023
         private System.Windows.Forms.RadioButton author_radioButton;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.CheckBox checkBox;
+        private System.Windows.Forms.Button categoryReset_button;
+        private System.Windows.Forms.Button recommendationReset_button;
     }
 }

@@ -50,7 +50,6 @@ namespace HEW2023
             this.textBox_id.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.textBox_id.Location = new System.Drawing.Point(77, 28);
             this.textBox_id.Name = "textBox_id";
-            this.textBox_id.PasswordChar = '*';
             this.textBox_id.ShortcutsEnabled = false;
             this.textBox_id.Size = new System.Drawing.Size(123, 19);
             this.textBox_id.TabIndex = 22;
@@ -98,6 +97,7 @@ namespace HEW2023
             this.Controls.Add(this.textBox_id);
             this.Name = "login";
             this.Text = "ユーザログイン";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.login_FormClosing);
             this.Load += new System.EventHandler(this.login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
