@@ -56,50 +56,68 @@ namespace HEW2023
                 dt.Columns.Add(columnsList[i]);
             }
 
+            List<int> generateList = new List<int>();
+            int generateCount = 0;
+
             for (int j = 0; j < dataCount; j++)
             {
                 DataRow dr = dt.NewRow();
-                for (int k = 0; k < columnsCount; k++)
+                if (originalDataList[j][8] != "1")
                 {
-                    int index = 0;
-                    if (k == 3)
+                    for (int k = 0; k < columnsCount; k++)
                     {
-                        index = Int32.Parse(dataList[j][k]);
-                        dr[columnsList[k].ToString()] = categoryList[index - 1][1];
-                    }
-                    else if (k == 4)
-                    {
-                        index = Int32.Parse(dataList[j][k]);
-                        dr[columnsList[k].ToString()] = recommendationList[index - 1][1];
-                    }
-                    else if (k == 5)
-                    {
-                        if (dataList[j][k] == "")
+                        int index = 0;
+                        if (k == 3)
                         {
-                            dr[columnsList[k].ToString()] = "データがありません";
+                            index = Int32.Parse(dataList[j][k]);
+                            dr[columnsList[k].ToString()] = categoryList[index - 1][1];
+                        }
+                        else if (k == 4)
+                        {
+                            index = Int32.Parse(dataList[j][k]);
+                            dr[columnsList[k].ToString()] = recommendationList[index - 1][1];
+                        }
+                        else if (k == 5)
+                        {
+                            if (dataList[j][k] == "")
+                            {
+                                dr[columnsList[k].ToString()] = "データがありません";
+                            }
+                            else
+                            {
+                                dr[columnsList[k].ToString()] = "あります。";
+                            }
                         }
                         else
                         {
-                            dr[columnsList[k].ToString()] = "あります。";
+                            dr[columnsList[k].ToString()] = dataList[j][k];
                         }
                     }
-                    else
+                    //ブックマークtemp処理
+                    if (originalDataList[j][9] == "1" && originalDataList[j][8] == "")
                     {
-                        dr[columnsList[k].ToString()] = dataList[j][k];
+                        generateList.Add(generateCount);
                     }
+                    dt.Rows.Add(dr);
+                    
+                    generateCount++;
                 }
-                dt.Rows.Add(dr);
             }
             DataGridView.DataSource = dt;
             dummy.connectionClose();
 
-            //ブックマークされている行の背景色を変更
-            for (int i = 0; i < originalDataCount; i++)
+            //ID部分の列を削除
+            dt.Columns.RemoveAt(0);
+
+            //列の幅を指定
+            DataGridView.Columns[0].Width = 265;
+            DataGridView.Columns[3].Width = 70;
+            DataGridView.Columns[5].Width = 65;
+
+            foreach (int i in generateList)
             {
-                if (originalDataList[i][9].Equals("1"))
-                {
-                    DataGridView.Rows[i].DefaultCellStyle.BackColor = Color.LightCyan;//背景色はここで変更する
-                }
+                dummy.intDebug(i);
+                DataGridView.Rows[i].DefaultCellStyle.BackColor = Color.Aquamarine;
             }
 
             //DataGridViewのセルの存在を確認

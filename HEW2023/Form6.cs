@@ -76,9 +76,6 @@ namespace HEW2023
                 if (originalDataList[j][8] != "1")
                 {
                     dataIndexList.Add(j+1);
-                    //DataRow dr = dt.NewRow();
-                    //dummy.StringDebug("delete_flag_0_"+(j+1));
-                    //ColumnsIndex
                     for (int k = 0; k < columnsCount; k++)
                     {
                         int index = 0;
@@ -115,11 +112,6 @@ namespace HEW2023
                     continue;
                     dummy.StringDebug("delete_flag_1_" + (j+1));
                 }
-                //// dataGridView の すべてのカラムで ソート を 無効化
-                //foreach (DataGridViewColumn column in DataGridView.Columns)
-                //{
-                //    column.SortMode = DataGridViewColumnSortMode.NotSortable;
-                //}
             }
             DataGridView.DataSource = dt;
             dummy.connectionClose();
@@ -146,7 +138,6 @@ namespace HEW2023
 
             int selectedRowIndex = DataGridView.CurrentCell.RowIndex;
             int selectId = dataIndexList[selectedRowIndex];
-            //dummy.MessageBox_(selectId.ToString() + "_selectId", selectedRowIndex.ToString() + "_selectRowIndex");
             String selectTitle = originalDataList[selectId-1][1];
             String title = "削除しますか？";
             String message = "選択された「" + selectTitle + "」を削除しますか？";
@@ -169,7 +160,6 @@ namespace HEW2023
                 }
             }
         }
-
         private String deleteQuery(int selectBookId)
         {
             String deleteQuery = "UPDATE `books_list` SET `delete_flag` = '1' WHERE `books_list`.`id` = " + selectBookId.ToString();

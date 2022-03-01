@@ -111,5 +111,11 @@ namespace HEW2023
         {
             dummy.NumOnlyKeyPress(e);
         }
+
+        private void login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            timer.Stop();
+            dummy.connectionClose();
+        }
     }
 }

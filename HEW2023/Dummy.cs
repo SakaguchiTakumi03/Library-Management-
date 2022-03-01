@@ -342,26 +342,26 @@ namespace HEW2023
                                 query += subSelectList[i];
                                 break;
                             case 1:
-                                query += "AND " + subSelectList[i];
+                                query += " AND " + subSelectList[i];
                                 break;
                         }
                     }
                 }
                 else
                 {
+                    query += " " + selectColumns + " LIKE '%" + inputData + "%'";
                     for (int i = 0; i < subSelectList.Count; i++)
                     {
                         switch (i)
                         {
                             case 0:
-                                query += subSelectList[i];
+                                query += " AND " + subSelectList[i];
                                 break;
                             case 1:
-                                query += "AND " + subSelectList[i];
+                                query += " AND " + subSelectList[i];
                                 break;
                         }
                     }
-                    query += " AND " + selectColumns + " LIKE '%" + inputData + "%'";
                 }
 
 

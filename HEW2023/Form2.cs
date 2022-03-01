@@ -15,11 +15,13 @@ namespace HEW2023
         //宣言
         Dummy dummy = new Dummy();
         private DataTable dt = new DataTable();
-        //List<int> select_combBox = new List<int>();
         public Form2()
         {
             InitializeComponent();
         }
+
+        List<int> generateList = new List<int>();
+        List<int> dataIndexList = new List<int>();
 
         private void Form2_Load(object sender, EventArgs e)
         {
@@ -53,20 +55,19 @@ namespace HEW2023
             int columnsCount = columnsList.Count();
             int originalDataCount = originalDataList.Count();
 
-
-
             for (int i = 0; i < columnsCount; i++)
             {
                 dt.Columns.Add(columnsList[i]);
             }
 
-            int generateCount;
+            int generateCount = 0;
 
             for (int j = 0; j < dataCount; j++)
             {
                 DataRow dr = dt.NewRow();
                 if (originalDataList[j][8] != "1")
                 {
+                    //dataIndexList
                     for (int k = 0; k < columnsCount; k++)
                     {
                         int index = 0;
@@ -97,23 +98,30 @@ namespace HEW2023
                         }
                     }
                     dt.Rows.Add(dr);
-
-                    if (originalDataList[j][9].Equals("1"))
+                    if (originalDataList[j][9] == "1" && originalDataList[j][8] == "")
                     {
-                        bookmarksList.Add(j);
+                        generateList.Add(generateCount);
                     }
+                    dataIndexList.Add(j);
+                    generateCount++;
                 }
-
             }
             DataGridView.DataSource = dt;
             dummy.connectionClose();
 
-            ////ブックマークされている行の背景色を変更
-            //foreach (int i in bookmarksList)
-            //{
-            //    DataGridView.Rows[i].DefaultCellStyle.BackColor = Color.Cyan;//背景色はここで変更する
-            //    dummy.intDebug(i);
-            //}
+            //ID部分の列を削除
+            dt.Columns.RemoveAt(0);
+
+            //列の幅を指定
+            DataGridView.Columns[0].Width = 265;
+            DataGridView.Columns[3].Width = 70;
+            DataGridView.Columns[5].Width = 65;
+
+            foreach (int i in generateList)
+            {
+                dummy.intDebug(i);
+                DataGridView.Rows[i].DefaultCellStyle.BackColor = Color.Aquamarine;
+            }
 
             //DataGridViewのセルの存在を確認
             if (dummy.gridCheck(DataGridView, this.Text))
@@ -132,20 +140,21 @@ namespace HEW2023
             }
             List<List<String>> originalDataList = new List<List<string>>(dummy.GetQuerySQL("books_list", dummy.books_pr()));
             int selectedRowIndex = DataGridView.CurrentCell.RowIndex;
+            int selectId = dataIndexList[selectedRowIndex];
+
             String title = "";
             String message = "";
-            if (originalDataList[selectedRowIndex][9].Equals("1"))
+            if (generateList.Contains(selectedRowIndex))
             {
                 title = "ブックマークを消しますか？";
-                selectedRowIndex++;
-                message = "選択された「" + selectedRowIndex + "」の登録を外しますか？";
+                message = "選択された「" + originalDataList[selectId][1] + "」の登録を外しますか？";
                 //処理
                 if (dummy.selectMessageBox(dummy.MessageBox_re(title, message)))
                 {
-                    if (dummy.sqlExectionQuery(notBookmarkQuery(selectedRowIndex)))
+                    if (dummy.sqlExectionQuery(notBookmarkQuery(selectId + 1)))
                     {
                         title = "削除完了";
-                        message = "選択された「" + selectedRowIndex + "」を削除しました。";
+                        message = "選択された「" + originalDataList[selectId][1] + "」を削除しました。";
                         dummy.MessageBox_(title, message);
                         this.Close();
                     }
@@ -160,15 +169,14 @@ namespace HEW2023
             else
             {
                 title = "ブックマーク登録しますか？";
-                selectedRowIndex++;
-                message = "選択された「" + selectedRowIndex + "」を登録しますか？";
+                message = "選択された「" + originalDataList[selectId][1] + "」を登録しますか？";
                 //処理
                 if (dummy.selectMessageBox(dummy.MessageBox_re(title, message)))
                 {
-                    if (dummy.sqlExectionQuery(bookmarkQuery(selectedRowIndex)))
+                    if (dummy.sqlExectionQuery(bookmarkQuery(selectId + 1)))
                     {
                         title = "登録完了";
-                        message = "選択された「" + selectedRowIndex + "」を登録しました。";
+                        message = "選択された「" + originalDataList[selectId][1] + "」を登録しました。";
                         dummy.MessageBox_(title, message);
                         this.Close();
                     }
