@@ -30,7 +30,7 @@ namespace HEW2023
             //MySQLに接続を確立
             if (!dummy.ConnectionDB())
             {
-                Console.WriteLine("「Form2」でDBのコネクションが確率出来ませんでした");
+                Console.WriteLine("「Form6」でDBのコネクションが確率出来ませんでした");
                 this.Close();
             }
 
@@ -123,16 +123,14 @@ namespace HEW2023
             }
             DataGridView.DataSource = dt;
             dummy.connectionClose();
+
+            //ID部分の列を削除
             dt.Columns.RemoveAt(0);
 
+            //列の幅を指定
             DataGridView.Columns[0].Width = 265;
             DataGridView.Columns[3].Width = 70;
             DataGridView.Columns[5].Width = 65;
-
-            foreach (int i in dataIndexList)
-            {
-                dummy.intDebug(i);
-            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -140,14 +138,15 @@ namespace HEW2023
             //MySQLに接続を確立
             if (!dummy.ConnectionDB())
             {
-                Console.WriteLine("「Form2」でDBのコネクションが確率出来ませんでした");
+                Console.WriteLine("「Form6」でDBのコネクションが確率出来ませんでした");
+                dummy.MessageBox_("不明なエラー", "処理を行えないため終了します。");
                 this.Close();
             }
             List<List<String>> originalDataList = new List<List<string>>(dummy.GetQuerySQL("books_list", dummy.books_pr()));
 
             int selectedRowIndex = DataGridView.CurrentCell.RowIndex;
             int selectId = dataIndexList[selectedRowIndex];
-            dummy.MessageBox_(selectId.ToString() + "_selectId", selectedRowIndex.ToString() + "_selectRowIndex");
+            //dummy.MessageBox_(selectId.ToString() + "_selectId", selectedRowIndex.ToString() + "_selectRowIndex");
             String selectTitle = originalDataList[selectId-1][1];
             String title = "削除しますか？";
             String message = "選択された「" + selectTitle + "」を削除しますか？";

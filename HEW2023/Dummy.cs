@@ -31,7 +31,7 @@ namespace HEW2023
         public string ConnectDBinfo()
         {
             string conString = string.Format("Server={0};Database={1};Uid={2};Pwd={3}", server, database, user, pass);
-            Console.WriteLine(conString);
+            //Console.WriteLine(conString);
             return conString;
         }
 
@@ -168,6 +168,8 @@ namespace HEW2023
         {
             con = new MySqlConnection(ConnectDBinfo());
 
+            //Console.WriteLine("con生成。");
+
             // MySQLへの接続
             try
             {
@@ -201,6 +203,21 @@ namespace HEW2023
                 String title = "ないです。";
                 String message = "表示する項目がないため" + text + "を終了します。";
                 MessageBox_(title, message);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool gridCheck(DataGridView dataGridView)
+        {
+            if (dataGridView.CurrentCell == null)
+            {
+                //String title = "ないです。";
+                //String message = "表示する項目がないため" + text + "を終了します。";
+                //MessageBox_(title, message);
                 return true;
             }
             else
@@ -255,8 +272,69 @@ namespace HEW2023
             return dataList;
         }
 
-        public List<List<String>> GetQuerySQL(String tableName, List<String> properties, int deleteCount)
+        public List<List<String>> SearchQuerySQL(String selectColumns, String searchText)
         //public List<List<String>> GetQuerySQL(String tableName)
+        {
+            List<List<String>> dataList = new List<List<String>>();
+            //String[] selectArr = select.Split(',');
+            //int countSelectArr = selectArr.Length;
+            //if (countSelectArr > 1)
+            //{
+            //    //for (int i = 0; i < countSelectList; i++)
+            //    //{
+
+            //    //}
+            //    StringDebug("LIstの要素複数");
+            //}
+            //else
+            //{
+            //    StringDebug("LIstの要素一つ");
+            //    //select = selectDataList[0];
+            //}
+
+            try
+            {
+                String query = "SELECT * FROM `books_list` WHERE " + selectColumns + " LIKE '%" + searchText + "%'";
+                StringDebug(query);
+
+                MySqlCommand cmd = new MySqlCommand(query, con);
+
+                this.da.SelectCommand = cmd;
+                this.da.Fill(this.dt);
+
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    List<string> columnsName = books_pr();
+                    //List<string> columnsName = list();
+
+                    int listCount = columnsName.Count();
+
+                    while (reader.Read())
+                    {
+                        List<String> columnsList = new List<string>();
+                        for (int i = 0; i < listCount; i++)
+                        {
+                            columnsList.Add(reader[columnsName[i]].ToString());
+                        }
+                        dataList.Add(columnsList);
+                    }
+                    reader.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("SearchQuerySQL_error");
+                MessageBox.Show(e.Message);
+            }
+            //finally
+            //{
+            //    con.Close();
+            //}
+            return dataList;
+        }
+
+        public List<List<String>> GetQuerySQL(String tableName, List<String> properties, int deleteCount)
         {
             List<List<String>> dataList = new List<List<String>>();
             try

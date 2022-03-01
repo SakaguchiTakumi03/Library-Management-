@@ -30,6 +30,7 @@ namespace HEW2023
             if (!dummy.ConnectionDB())
             {
                 Console.WriteLine("「Form2」でDBのコネクションが確率出来ませんでした");
+                dummy.MessageBox_("不明なエラー", "処理を行えないため終了します。");
                 this.Close();
             }
 
