@@ -200,7 +200,7 @@ namespace HEW2023
                 String insertRecommendation = temp.ToString();
                 dummy.StringDebug("insertCategory:"+insertCategory);
                 dummy.StringDebug("insertRecommendation:"+insertRecommendation);
-                String registrationDate = dt.ToString("yyyy_mm_dd");
+                String registrationDate = dt.ToString("yyyy_MM_dd");
                 List<String> insertList = new List<String>()
                 {
                     title,
@@ -252,7 +252,7 @@ namespace HEW2023
         {
             //List<String> insertList = insertList;
             //String insertQuery = "INSERT INTO `books_list` (`id`, `title`, `author`, `category_id`, `recommendation_id`, `image_name`, `purchase_date`, `registration_date`, `delete_flag`, `bookmark_flag`) VALUES (NULL, 'hoge', 'ほげ', '2', '5', NULL, '2022_02_25', '2022_02_28', NULL, NULL)";
-            String insertQuery = "INSERT INTO `books_list` (`id`, `title`, `author`, `category_id`, `recommendation_id`, `image_name`, `purchase_date`, `registration_date`, `delete_flag`, `bookmark_flag`) VALUES (NULL, '" + insertList[0] + "', '" + insertList[1] + "', '" + insertList[2] + "', '" + insertList[3] + "', " + insertList[4] + ", '" + insertList[5] + "', '" + insertList[6] + "', NULL, NULL)";
+            String insertQuery = "INSERT INTO `books_list` (`id`, `title`, `author`, `category_id`, `recommendation_id`, `image_date`, `purchase_date`, `registration_date`, `delete_flag`, `bookmark_flag`) VALUES (NULL, '" + insertList[0] + "', '" + insertList[1] + "', '" + insertList[2] + "', '" + insertList[3] + "', " + insertList[4] + ", '" + insertList[5] + "', '" + insertList[6] + "', NULL, NULL)";
             return insertQuery;
         }
 

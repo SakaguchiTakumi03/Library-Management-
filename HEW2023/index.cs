@@ -46,6 +46,8 @@ namespace HEW2023
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
 
+            button4.Enabled = false;
+
         }
 
         private void button1_Click(object sender, EventArgs e)

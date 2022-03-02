@@ -33,6 +33,8 @@ namespace HEW2023
             this.panel1 = new System.Windows.Forms.Panel();
             this.DataGridView = new System.Windows.Forms.DataGridView();
             this.generateQR_button = new System.Windows.Forms.Button();
+            this.generateImage_button = new System.Windows.Forms.Button();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
@@ -50,7 +52,7 @@ namespace HEW2023
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.panel1.Controls.Add(this.pictureBox);
-            this.panel1.Location = new System.Drawing.Point(589, 21);
+            this.panel1.Location = new System.Drawing.Point(688, 57);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(250, 250);
             this.panel1.TabIndex = 2;
@@ -58,7 +60,7 @@ namespace HEW2023
             // DataGridView
             // 
             this.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridView.Location = new System.Drawing.Point(12, 12);
+            this.DataGridView.Location = new System.Drawing.Point(21, 22);
             this.DataGridView.Name = "DataGridView";
             this.DataGridView.RowTemplate.Height = 21;
             this.DataGridView.Size = new System.Drawing.Size(561, 335);
@@ -67,7 +69,7 @@ namespace HEW2023
             // generateQR_button
             // 
             this.generateQR_button.Font = new System.Drawing.Font("MS UI Gothic", 16F);
-            this.generateQR_button.Location = new System.Drawing.Point(626, 277);
+            this.generateQR_button.Location = new System.Drawing.Point(629, 326);
             this.generateQR_button.Name = "generateQR_button";
             this.generateQR_button.Size = new System.Drawing.Size(177, 70);
             this.generateQR_button.TabIndex = 4;
@@ -75,11 +77,28 @@ namespace HEW2023
             this.generateQR_button.UseVisualStyleBackColor = true;
             this.generateQR_button.Click += new System.EventHandler(this.generateQR_button_Click);
             // 
+            // generateImage_button
+            // 
+            this.generateImage_button.Enabled = false;
+            this.generateImage_button.Font = new System.Drawing.Font("MS UI Gothic", 16F);
+            this.generateImage_button.Location = new System.Drawing.Point(812, 326);
+            this.generateImage_button.Name = "generateImage_button";
+            this.generateImage_button.Size = new System.Drawing.Size(177, 70);
+            this.generateImage_button.TabIndex = 5;
+            this.generateImage_button.Text = "画像生成";
+            this.generateImage_button.UseVisualStyleBackColor = true;
+            this.generateImage_button.Click += new System.EventHandler(this.generateImage_button_Click);
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog_FileOk);
+            // 
             // Form8
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(860, 514);
+            this.ClientSize = new System.Drawing.Size(1053, 447);
+            this.Controls.Add(this.generateImage_button);
             this.Controls.Add(this.generateQR_button);
             this.Controls.Add(this.DataGridView);
             this.Controls.Add(this.panel1);
@@ -99,5 +118,7 @@ namespace HEW2023
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView DataGridView;
         private System.Windows.Forms.Button generateQR_button;
+        private System.Windows.Forms.Button generateImage_button;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }

@@ -22,9 +22,6 @@ namespace HEW2023
 
         private void Form3_Load(object sender, EventArgs e)
         {
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-
             //MySQLに接続を確立
             if (!dummy.ConnectionDB())
             {
@@ -36,6 +33,10 @@ namespace HEW2023
             DataGridView.MultiSelect = false;
             DataGridView.ReadOnly = true;
             this.DataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            DataGridView.AllowUserToAddRows = false;
 
             int deleteNum = 3;
 
@@ -114,6 +115,13 @@ namespace HEW2023
             DataGridView.Columns[3].Width = 70;
             DataGridView.Columns[5].Width = 65;
 
+            //ソート無効化
+            foreach (DataGridViewColumn c in DataGridView.Columns)
+            {
+                c.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+
+            //ブックマーク処理
             foreach (int i in generateList)
             {
                 dummy.intDebug(i);

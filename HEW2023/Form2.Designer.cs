@@ -40,13 +40,13 @@ namespace HEW2023
             this.DataGridView.Location = new System.Drawing.Point(12, 12);
             this.DataGridView.Name = "DataGridView";
             this.DataGridView.RowTemplate.Height = 21;
-            this.DataGridView.Size = new System.Drawing.Size(761, 426);
+            this.DataGridView.Size = new System.Drawing.Size(761, 330);
             this.DataGridView.TabIndex = 1;
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("MS UI Gothic", 21F);
-            this.button1.Location = new System.Drawing.Point(184, 470);
+            this.button1.Location = new System.Drawing.Point(202, 365);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(388, 73);
             this.button1.TabIndex = 2;
@@ -58,7 +58,7 @@ namespace HEW2023
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(790, 574);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.DataGridView);
             this.Name = "Form2";
