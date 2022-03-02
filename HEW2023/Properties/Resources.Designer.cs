@@ -403,6 +403,16 @@ namespace HEW2023.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap white_read_QR {
+            get {
+                object obj = ResourceManager.GetObject("white_read_QR", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap white_search {
             get {
                 object obj = ResourceManager.GetObject("white_search", resourceCulture);

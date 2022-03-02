@@ -167,12 +167,6 @@ namespace HEW2023
             String title = "削除しますか？";
             String message = "選択された「" + selectTitle + "」を削除しますか？";
 
-            bool result = false;
-
-            dummy.StringDebug("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
-            Console.WriteLine(generateList.Contains(selectedRowIndex));
-            dummy.StringDebug("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
-
             if (generateList.Contains(selectedRowIndex))
             {
                 if (dummy.selectMessageBox(dummy.MessageBox_re("ブックマーク確認", "ブックマーク済みですが削除処理に進みますか？")))
@@ -218,27 +212,6 @@ namespace HEW2023
             }
                 
         }
-
-        //private void hogehoge(String title, String message)
-        //{
-        //    if (dummy.selectMessageBox(dummy.MessageBox_re(title, message)))
-        //    {
-        //        if (dummy.sqlExectionQuery(deleteQuery(selectId)))
-        //        {
-        //            title = "削除完了";
-        //            message = "選択された「" + selectTitle + "」を削除しました。";
-        //            dummy.MessageBox_(title, message);
-        //            generateList.Clear();
-        //            Form6_Load(null, EventArgs.Empty);
-        //        }
-        //        else
-        //        {
-        //            dummy.StringDebug("form6のquery実行にてエラー発生。");
-        //            this.Close();
-        //            return;
-        //        }
-        //    }
-        //}
 
         private String deleteQuery(int selectBookId)
         {

@@ -124,14 +124,20 @@
   <data name="white_people" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\img\white\white_people.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="gray_home" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resource\img\gray\gray_home.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="white_graf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resource\img\white\white_graf.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="black_dir_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\img\black\black_dir_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="white_bag" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resource\img\white\white_bag.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="white_memo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\img\white\white_memo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="black_QR" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resource\img\black\black_QR.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="gray_list" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\img\gray\gray_list.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -151,11 +157,11 @@
   <data name="black_list" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\img\black\black_list.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="white_home" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resource\img\white\white_home.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="white_box" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\img\white\white_box.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="white_dir_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resource\img\white\white_dir_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="white_search" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\img\white\white_search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -169,14 +175,11 @@
   <data name="gray_dir_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\img\gray\gray_dir_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="gray_book_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resource\img\gray\gray_book_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="white_book_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\img\white\white_book_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="black_bag" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resource\img\black\black_bag.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="white_home" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resource\img\white\white_home.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="white_book_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\img\white\white_book_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -184,8 +187,8 @@
   <data name="gray_box" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\img\gray\gray_box.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="white_graf" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resource\img\white\white_graf.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="gray_home" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resource\img\gray\gray_home.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="black_home" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\img\black\black_home.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -202,20 +205,20 @@
   <data name="gray_book_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\img\gray\gray_book_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="white_dir_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resource\img\white\white_dir_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="black_bag" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resource\img\black\black_bag.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="white_stash" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\img\white\white_stash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="gray_graf" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resource\img\gray\gray_graf.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="gray_book_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resource\img\gray\gray_book_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="gray_bag" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\img\gray\gray_bag.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="white_bag" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resource\img\white\white_bag.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="gray_graf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resource\img\gray\gray_graf.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="black_memo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\img\black\black_memo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -223,7 +226,7 @@
   <data name="gray_dir_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\img\gray\gray_dir_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="black_QR" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resource\img\black\black_QR.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="white_read_QR" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resource\img\white\white_read_QR.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
