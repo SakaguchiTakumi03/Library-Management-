@@ -173,6 +173,16 @@ namespace HEW2023.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap black_QR {
+            get {
+                object obj = ResourceManager.GetObject("black_QR", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap gray_bag {
             get {
                 object obj = ResourceManager.GetObject("gray_bag", resourceCulture);
