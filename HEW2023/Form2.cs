@@ -25,8 +25,15 @@ namespace HEW2023
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            DataGridView.AutoGenerateColumns = true;
+            generateList = new List<int>();
+            dataIndexList = new List<int>();
+            dt = new DataTable();
+            dummy = new Dummy();
+
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
+            DataGridView.AllowUserToAddRows = false;
 
             //MySQLに接続を確立
             if (!dummy.ConnectionDB())
@@ -106,8 +113,11 @@ namespace HEW2023
                     generateCount++;
                 }
             }
+
             DataGridView.DataSource = dt;
             dummy.connectionClose();
+
+            
 
             //ID部分の列を削除
             dt.Columns.RemoveAt(0);
@@ -117,17 +127,27 @@ namespace HEW2023
             DataGridView.Columns[3].Width = 70;
             DataGridView.Columns[5].Width = 65;
 
+            //ソート無効化
+            foreach (DataGridViewColumn c in DataGridView.Columns)
+            {
+                c.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+
             foreach (int i in generateList)
             {
                 dummy.intDebug(i);
                 DataGridView.Rows[i].DefaultCellStyle.BackColor = Color.Aquamarine;
             }
 
+            //dt.Rows.RemoveAt(DataGridView.Rows.Count - 1);
+
             //DataGridViewのセルの存在を確認
             if (dummy.gridCheck(DataGridView, this.Text))
             {
                 this.Close();
             }
+
+            dummy.connectionClose();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -156,7 +176,7 @@ namespace HEW2023
                         title = "削除完了";
                         message = "選択された「" + originalDataList[selectId][1] + "」を削除しました。";
                         dummy.MessageBox_(title, message);
-                        this.Close();
+                        Form2_Load(null, EventArgs.Empty);
                     }
                     else
                     {
@@ -178,7 +198,7 @@ namespace HEW2023
                         title = "登録完了";
                         message = "選択された「" + originalDataList[selectId][1] + "」を登録しました。";
                         dummy.MessageBox_(title, message);
-                        this.Close();
+                        Form2_Load(null, EventArgs.Empty);
                     }
                     else
                     {

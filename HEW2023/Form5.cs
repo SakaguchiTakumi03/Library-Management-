@@ -23,6 +23,8 @@ namespace HEW2023
 
         private void Form5_Load(object sender, EventArgs e)
         {
+            listCount_label.Text = "検索が実行されていません。";
+
             if (!dummy.ConnectionDB())
             {
                 Console.WriteLine("「Form5」でDBのコネクションが確率出来ませんでした");
@@ -101,6 +103,10 @@ namespace HEW2023
             DataGridView.MultiSelect = false;
             DataGridView.ReadOnly = true;
             this.DataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            DataGridView.AllowUserToAddRows = false;
 
             DataGridView.DataSource = null;
 
@@ -224,17 +230,14 @@ namespace HEW2023
             DataGridView.Columns[3].Width = 70;
             DataGridView.Columns[5].Width = 65;
 
-            bool resurt = checkBox.Checked;
+            //ソート無効化
+            foreach (DataGridViewColumn c in DataGridView.Columns)
+            {
+                c.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
 
-            if (resurt)
-            {
-                dummy.MessageBox_("検索結果", "表示件数「" + (rowsCount - 1) + "」");
-                dummy.StringDebug("確認にチェックされています。");
-            }
-            else
-            {
-                dummy.StringDebug("確認にチェックされていません。");
-            }
+            listCount_label.Text = "検索結果の表示数は「"+rowsCount.ToString()+"」です。";
+
         }
 
         private void categoryReset_button_Click(object sender, EventArgs e)

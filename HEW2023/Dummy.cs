@@ -44,7 +44,7 @@ namespace HEW2023
                 "author",
                 "category_id",
                 "recommendation_id",
-                "image_name",
+                "image_date",
                 "purchase_date",
                 "registration_date",
                 "delete_flag",
@@ -62,7 +62,7 @@ namespace HEW2023
                 "作者",
                 "カテゴリID",
                 "評価点",
-                "画像名",
+                "QR生成日",
                 "購入日",
                 "登録日",
                 "削除フラグ",
@@ -363,7 +363,6 @@ namespace HEW2023
                         }
                     }
                 }
-
 
                 StringDebug(query);
 

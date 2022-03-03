@@ -39,7 +39,7 @@ namespace HEW2023
             this.DataGridView.Location = new System.Drawing.Point(12, 12);
             this.DataGridView.Name = "DataGridView";
             this.DataGridView.RowTemplate.Height = 21;
-            this.DataGridView.Size = new System.Drawing.Size(762, 421);
+            this.DataGridView.Size = new System.Drawing.Size(761, 421);
             this.DataGridView.TabIndex = 0;
             // 
             // Form3
