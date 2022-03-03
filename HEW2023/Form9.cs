@@ -12,6 +12,7 @@ using OpenCvSharp;
 using OpenCvSharp.Extensions;
 using AForge.Video;
 using AForge.Video.DirectShow;
+//using Discord.Webhooks;
 
 namespace HEW2023
 {
@@ -72,6 +73,8 @@ namespace HEW2023
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
+
+            pictureBox1.Image = Properties.Resources.no_signal;
         }
 
         //新しいフレームが生成された際に呼ばれる
@@ -205,6 +208,9 @@ namespace HEW2023
             }
         }
 
-
+        //private void sendWebHook()
+        //{
+        //    var webhook = new 
+        //}
     }
 }
