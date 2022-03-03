@@ -25,6 +25,7 @@ namespace HEW2023
         public Form5 f5 = null;
         public Form6 f6 = null;
         public Form8 f8 = null;
+        public Form9 f9 = null;
         public login login = null;
         Dummy dummy = new Dummy();
 
@@ -171,6 +172,19 @@ namespace HEW2023
             else
             {
                 f8.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            if (this.f9 == null || this.f9.IsDisposed)
+            {
+                this.f9 = new Form9();
+                f9.Show();
+            }
+            else
+            {
+                f9.WindowState = FormWindowState.Normal;
             }
         }
     }
