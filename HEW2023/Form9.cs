@@ -10,77 +10,201 @@ using System.Windows.Forms;
 
 using OpenCvSharp;
 using OpenCvSharp.Extensions;
+using AForge.Video;
+using AForge.Video.DirectShow;
 
 namespace HEW2023
 {
+    ///参考にさせていただいたサイト一覧
+    ///https://qiita.com/gaosan/items/2208d3e732d00ec2b344
+    ///https://tocsworld.wordpress.com/2014/02/25/c%E3%81%AB%E3%82%88%E3%82%8Busb%E3%82%AB%E3%83%A1%E3%83%A9%E6%93%8D%E4%BD%9C/
+    ///https://belltree.life/windows-qr-code/
+    ///https://extralab.org/wp/qrcode_reader_creater_webcamera/
+    ///End
+
     public partial class Form9 : Form
     {
 
+        //画像フィルタリングのフィルタ値、ただし値を上げると精度と処理速度が相関的に増加する。
+        const int maxFilterSize = 10;
+
+        public bool DeviceExist = false;                // デバイス有無
+        public FilterInfoCollection videoDevices;       // カメラデバイスの一覧
+        public VideoCaptureDevice videoSource = null;   // カメラデバイスから取得した映像
+
+        String text = string.Empty;
+
         Dummy dummy = new Dummy();
 
-        private Mat frame;
-        private VideoCapture camera;
         public Form9()
         {
             InitializeComponent();
+            this.getCameraInfo();
         }
+        public void getCameraInfo()
+        {
+            try
+            {
+                // 端末で認識しているカメラデバイスの一覧を取得
+                videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+                cmbCamera.Items.Clear();
 
+                if (videoDevices.Count == 0)
+                    throw new ApplicationException();
+
+                foreach (FilterInfo device in videoDevices)
+                {
+                    //カメラデバイスの一覧をコンボボックスに追加
+                    cmbCamera.Items.Add(device.Name);
+                    cmbCamera.SelectedIndex = 0;
+                    DeviceExist = true;
+                }
+            }
+            catch (ApplicationException)
+            {
+                DeviceExist = false;
+                cmbCamera.Items.Add("Deviceが存在していません。");
+            }
+
+        }
         private void Form9_Load(object sender, EventArgs e)
         {
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            //pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
         }
+
+        //新しいフレームが生成された際に呼ばれる
+        private void videoRendering(object sender, NewFrameEventArgs eventArgs)
+        {
+            Bitmap image = (Bitmap)eventArgs.Frame.Clone();
+
+            try
+            {
+                QR_Readr(image);
+                pictureBox1.Image = image;
+            }
+            catch(Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message + Environment.NewLine + ex.StackTrace);
+            }
+        }
+
 
         private void inputCamera_button_Click(object sender, EventArgs e)
         {
-            //VideoCapture作成
-            using (camera = new VideoCapture())
+            if (inputCamera_button.Text == "Webカメラ起動")
             {
-                //カメラの起動　
-                camera.Open(0);
-                //camera.Open(1);
+                //pictureImage初期化
+                pictureBox1.Image = null;
 
-                if (!camera.IsOpened())
+                //カメラ起動処理
+                //接続可能カメラ確認
+                if (cmbCamera.Items.Count == 0)
                 {
-                    //throw new Exception("capture initialization failed");
-                    dummy.MessageBox_("デバイス接続エラー","カメラを認識しませんでした。");
-                    this.Close();                
+                    dummy.MessageBox_("デバイス接続エラー","接続可能なカメラが存在しないです。");
+                    return;
                 }
-
-                //画像取得用のMatを作成
-                frame = new Mat();
-
-                while (true)
+                if (DeviceExist)
                 {
-                    try
-                    {
-                        camera.Read(frame);
-                        if (frame.Empty())
-                        {
-                            break;
-                        }
+                    videoSource = new VideoCaptureDevice(videoDevices[cmbCamera.SelectedIndex].MonikerString);
+                    videoSource.NewFrame += new NewFrameEventHandler(videoRendering);
 
-                        if (frame.Size().Width > 0)
-                        {
-                            //PictureBoxに表示　MatをBitMapに変換
-                            pictureBox1.Image = BitmapConverter.ToBitmap(frame);
-                        }
+                    this.CloseVideoSource();
 
-                        int key = Cv2.WaitKey();
+                    videoSource.Start();
 
-                        if (this.IsDisposed)
-                        {
-                            break;
-                        }
-                    }
+                    inputCamera_button.Text = "Webカメラ停止";
 
-                    catch (Exception)
-                    {
-                        break;
-                    }
                 }
-
+            }
+            else
+            {
+                //カメラ停止処理
+                if (videoSource.IsRunning)
+                {
+                    this.CloseVideoSource();
+                    inputCamera_button.Text = "Webカメラ起動";
+                    pictureBox1.Image = Properties.Resources.no_signal;
+                }
             }
         }
+
+        private void CloseVideoSource()
+        {
+            if (!(videoSource == null))
+            {
+                if (videoSource.IsRunning)
+                {
+                    videoSource.SignalToStop();
+                    videoSource = null;
+                }
+            }
+        }
+
+        private void Form9_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (videoSource != null && videoSource.IsRunning)
+            {
+                dummy.StringDebug("QR読み取りプログラムを終了しています。");
+                this.CloseVideoSource();
+            }
+        }
+
+        private void QR_Readr(System.Drawing.Image image)
+        {
+            try
+            {
+                Bitmap MyBitmap = new Bitmap(image);
+
+                //String text = string.Empty;
+
+                using (Mat imageMat = OpenCvSharp.Extensions.BitmapConverter.ToMat(MyBitmap))
+                {
+                    //QRコードの解析処理
+                    ZXing.BarcodeReader reader = new ZXing.BarcodeReader();
+
+                    for (int i = 0; i < maxFilterSize; i++)
+                    {
+                        //奇数にするインクリメント
+                        i++;
+
+                        int filterSize = i;
+
+                        //別のMATに移す
+                        using (Mat imageMatFilter = imageMat.GaussianBlur(new OpenCvSharp.Size(filterSize,filterSize),0))
+                        {
+                            //ビットマップに戻す
+                            using (Bitmap filterResult = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(imageMatFilter))
+                            {
+                                try
+                                {
+                                    //QRコードの解析
+                                    ZXing.Result result = reader.Decode(filterResult);
+
+                                    if (result != null)
+                                    {
+                                        text = result.Text;
+                                        dummy.MessageBox_("QRコード取得結果",text);
+                                        return;
+                                    }
+                                }
+                                catch
+                                {
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                dummy.MessageBox_("error", "QR_Readrにてエラーが起きました。");
+                this.Close();
+            }
+        }
+
+
     }
 }

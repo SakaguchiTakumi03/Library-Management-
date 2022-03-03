@@ -293,6 +293,16 @@ namespace HEW2023.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap no_signal {
+            get {
+                object obj = ResourceManager.GetObject("no_signal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap white_bag {
             get {
                 object obj = ResourceManager.GetObject("white_bag", resourceCulture);
