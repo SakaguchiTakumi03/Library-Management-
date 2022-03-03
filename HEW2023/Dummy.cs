@@ -141,15 +141,11 @@ namespace HEW2023
         {
             con = new MySqlConnection(ConnectDBinfo());
 
-            //Console.WriteLine("con生成。");
-
             // MySQLへの接続
             try
             {
                 //接続ポートを開く
                 con.Open();
-
-                //MessageBox.Show("MySQL接続完了");
 
                 return true;
 
@@ -188,9 +184,6 @@ namespace HEW2023
         {
             if (dataGridView.CurrentCell == null)
             {
-                //String title = "ないです。";
-                //String message = "表示する項目がないため" + text + "を終了します。";
-                //MessageBox_(title, message);
                 return true;
             }
             else
@@ -200,7 +193,6 @@ namespace HEW2023
         }
 
         public List<List<String>> GetQuerySQL(String tableName, List<String> properties)
-        //public List<List<String>> GetQuerySQL(String tableName)
         {
             List<List<String>> dataList = new List<List<String>>();
             try
@@ -217,7 +209,6 @@ namespace HEW2023
                 using (MySqlDataReader reader = cmd.ExecuteReader())
                 {
                     List<string> columnsName = properties;
-                    //List<string> columnsName = list();
 
                     int listCount = columnsName.Count();
 
@@ -238,33 +229,12 @@ namespace HEW2023
                 Console.WriteLine("GetQuerySQL_error_"+tableName);
                 MessageBox.Show(e.Message);
             }
-            //finally
-            //{
-            //    con.Close();
-            //}
             return dataList;
         }
 
         public List<List<String>> SearchQuerySQL(String selectColumns, String searchText)
-        //public List<List<String>> GetQuerySQL(String tableName)
         {
             List<List<String>> dataList = new List<List<String>>();
-            //String[] selectArr = select.Split(',');
-            //int countSelectArr = selectArr.Length;
-            //if (countSelectArr > 1)
-            //{
-            //    //for (int i = 0; i < countSelectList; i++)
-            //    //{
-
-            //    //}
-            //    StringDebug("LIstの要素複数");
-            //}
-            //else
-            //{
-            //    StringDebug("LIstの要素一つ");
-            //    //select = selectDataList[0];
-            //}
-
             try
             {
                 String query = "SELECT * FROM `books_list` WHERE " + selectColumns + " LIKE '%" + searchText + "%'";
@@ -300,33 +270,12 @@ namespace HEW2023
                 Console.WriteLine("SearchQuerySQL_error");
                 MessageBox.Show(e.Message);
             }
-            //finally
-            //{
-            //    con.Close();
-            //}
             return dataList;
         }
 
         public List<List<String>> SearchQuerySQL(String selectColumns, String inputData, List<String> subSelectList)
-        //public List<List<String>> GetQuerySQL(String tableName)
         {
             List<List<String>> dataList = new List<List<String>>();
-            //String[] selectArr = select.Split(',');
-            //int countSelectArr = selectArr.Length;
-            //if (countSelectArr > 1)
-            //{
-            //    //for (int i = 0; i < countSelectList; i++)
-            //    //{
-
-            //    //}
-            //    StringDebug("LIstの要素複数");
-            //}
-            //else
-            //{
-            //    StringDebug("LIstの要素一つ");
-            //    //select = selectDataList[0];
-            //}
-
             try
             {
                 int count = 0;
@@ -440,10 +389,6 @@ namespace HEW2023
             {
                 MessageBox.Show(e.Message);
             }
-            //finally
-            //{
-            //    con.Close();
-            //}
             return dataList;
         }
 
@@ -506,31 +451,6 @@ namespace HEW2023
                 return false;
             }
         }
-
-        //public void sqlExectionQuery(String query)
-        //{
-        //    if (ConnectionDB())
-        //    {
-        //        using (MySqlTransaction transaction = con.BeginTransaction())
-        //        {
-        //            try
-        //            {
-        //                using (MySqlCommand cmd = new MySqlCommand(query,con,transaction))
-        //                {
-        //                    cmd.ExecuteNonQuery();
-        //                    transaction.Commit();
-        //                }
-        //            }
-        //            catch(Exception e)
-        //            {
-        //                transaction.Rollback();
-        //                MessageBox_("", e.ToString());
-        //                this.Close();
-        //                return;
-        //            }
-        //        }
-        //    }
-        //}
 
         public bool sqlExectionQuery(String query)
         {
