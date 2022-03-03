@@ -21,6 +21,10 @@ namespace HEW2023
         //宣言
         Dummy dummy = new Dummy();
         private DataTable dt = new DataTable();
+
+        DateTime date = DateTime.Today;
+        String nowDate = String.Empty;
+
         //PictureBox pictureBox = 
         public Form8()
         {
@@ -56,6 +60,8 @@ namespace HEW2023
         {
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
+
+
 
             //MySQLに接続を確立
             if (!dummy.ConnectionDB())
@@ -149,15 +155,8 @@ namespace HEW2023
 
             foreach (int i in generateList)
             {
-                //dummy.intDebug(i);
                 DataGridView.Rows[i].DefaultCellStyle.BackColor = Color.Aquamarine;
             }
-
-            //dummy.StringDebug("dataIndexList");
-            //foreach(int i in dataIndexList)
-            //{
-            //    dummy.intDebug(i);
-            //}
 
             //DataGridViewのセルの存在を確認
             if (dummy.gridCheck(DataGridView, this.Text))
@@ -172,13 +171,13 @@ namespace HEW2023
         {
             List<String> inportData = new List<String>(originalDataList[dataIndexList[DataGridView.CurrentCell.RowIndex] - 1]);
 
-            for (int i = 0; i < inportData.Count; i++)
+            for (int i = 0; i < inportData.Count ; i++)
             {
                 int index = 0;
-                //int index = Int32.Parse(inportData[i]);
                 if (inportData[i] == "")
                 {
                     inportData[i] = "データがありません";
+                    continue;
                 }
                 if (i == 3)
                 {
@@ -189,24 +188,66 @@ namespace HEW2023
                 {
                     index = Int32.Parse(inportData[i]);
                     inportData[i] = recommendationList[index - 1][1];
-                }else if (i == 9 && inportData[i] == "1")
-                {
-                    inportData[i] = "ブックマーク済";
                 }
             }
 
-            //foreach (String i in inportData)
-            //{
-            //    dummy.StringDebug(i);
-            //}
+            inportData[5] = date.ToString("yyyy_MM_dd");
+
+            if (inportData[9] == "1")
+            {
+                inportData[9] = "されています。";
+            }
+            else
+            {
+                inportData[9] = "されていません。";
+            }
+
+            inportData.RemoveAt(8);
+
+            inportData.Remove("");
+
+            for (int i = 0; i < inportData.Count; i++)
+            {
+                switch (i)
+                {
+                    case 0:
+                        inportData[i] = "ID：" + inportData[i];
+                        break;
+                    case 1:
+                        inportData[i] = "タイトル：" + inportData[i];
+                        break;
+                    case 2:
+                        inportData[i] = "著者：" + inportData[i];
+                        break;
+                    case 3:
+                        inportData[i] = "カテゴリ：" + inportData[i];
+                        break;
+                    case 4:
+                        inportData[i] = "評価：" + inportData[i];
+                        break;
+                    case 5:
+                        inportData[i] = "QRコード生成日：" + inportData[i];
+                        break;
+                    case 6:
+                        inportData[i] = "購入日：" + inportData[i];
+                        break;
+                    case 7:
+                        inportData[i] = "登録日：" + inportData[i];
+                        break;
+                    case 8:
+                        inportData[i] = "ブックマーク：" + inportData[i];
+                        break;
+                }
+            }
 
             String inputText = "";
-
-            foreach(String input in inportData)
+            foreach (String input in inportData)
             {
                 inputText += input;
                 inputText += "\n";
             }
+
+            dummy.StringDebug(inputText);
 
             int selectedRowIndex = DataGridView.CurrentCell.RowIndex;
             int selectId = dataIndexList[selectedRowIndex];
@@ -214,18 +255,17 @@ namespace HEW2023
 
             String message = "タイトル：「" + selectTitle + "」を生成してよろしいでしょうか？";
 
-            //if (dummy.selectMessageBox(dummy.MessageBox_re("QR生成確認",message)))
-            //{
-                //QRコード生成処理(マジ感謝！！)
-                ZXingGenerate(inputText);
-                generateImage_button.Enabled = true;
-                //generateQR_button.Enabled = false;
-            //}
-            
+
+
+            //QRコード生成処理
+            ZXingGenerate(inputText);
+            generateImage_button.Enabled = true;
+
             inportData.Clear();
         }
 
         String selectTitle;
+        int selectId = -1;
 
         private void generateImage_button_Click(object sender, EventArgs e)
         {
@@ -239,7 +279,7 @@ namespace HEW2023
             List<List<String>> originalDataList = new List<List<string>>(dummy.GetQuerySQL("books_list", dummy.books_pr()));
 
             int selectedRowIndex = DataGridView.CurrentCell.RowIndex;
-            int selectId = dataIndexList[selectedRowIndex];
+            selectId = dataIndexList[selectedRowIndex];
             selectTitle = originalDataList[selectId - 1][1];
 
             saveFileDialog.Filter = "JPEG形式|*.jpeg|GIF形式|*.gif|PNG形式|*.png";
@@ -255,9 +295,15 @@ namespace HEW2023
             saveFileDialog.ShowDialog();
         }
 
+        private String updateDateQuery(int selectId)
+        {
+            nowDate = date.ToString("yyyy_MM_dd");
+            String updateDateQuery = "UPDATE `books_list` SET `image_date` = '"+ nowDate +"' WHERE `books_list`.`id` = " + selectId.ToString();
+            return updateDateQuery;
+        }
+
         private void saveFileDialog_FileOk(object sender, CancelEventArgs e)
         {
-            //String extenson = System.IO.Path.GetExtension(saveFileDialog.FileName);
             String extenson = System.IO.Path.GetExtension(saveFileDialog.FileName);
             try
             {
@@ -282,18 +328,15 @@ namespace HEW2023
                 dummy.MessageBox_("エラー",ex.Message);
             }
 
-
             dummy.StringDebug("「"+selectTitle+"」が保存されました。");
+
+            //image_dateカラムへの上書き処理
+            dummy.sqlExectionQuery(updateDateQuery(selectId));
 
             //疑似終了処理
             pictureBox.Image = null;
             generateImage_button.Enabled = false;
             generateQR_button.Enabled = true;
         }
-
-        //private bool checkFile()
-        //{
-
-        //}
     }
 }

@@ -14,7 +14,7 @@ namespace HEW2023
     {
         Dummy dummy = new Dummy();
         DateTime dt = DateTime.Today;
-        String nowDate;
+        String nowDate = String.Empty;
 
         public Form1()
         {
@@ -34,6 +34,8 @@ namespace HEW2023
             this.MaximizeBox = false;
 
             nowDate = dt.ToString("yyyy_MM_dd");
+
+            dummy.MessageBox_("test", nowDate);
 
             if (!dummy.ConnectionDB())
             {
