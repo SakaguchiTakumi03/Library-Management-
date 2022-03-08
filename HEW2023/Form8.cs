@@ -58,11 +58,6 @@ namespace HEW2023
 
         private void Form8_Load(object sender, EventArgs e)
         {
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-
-
-
             //MySQLに接続を確立
             if (!dummy.ConnectionDB())
             {
@@ -74,6 +69,12 @@ namespace HEW2023
             DataGridView.MultiSelect = false;
             DataGridView.ReadOnly = true;
             this.DataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            DataGridView.AllowUserToAddRows = false;
+
+            dt = new DataTable();
 
             int deleteNum = 3;
 
@@ -124,7 +125,7 @@ namespace HEW2023
                             }
                             else
                             {
-                                dr[columnsList[k].ToString()] = "あります。";
+                                dr[columnsList[k].ToString()] = dataList[j][k];
                             }
                         }
                         else
@@ -162,6 +163,11 @@ namespace HEW2023
             if (dummy.gridCheck(DataGridView, this.Text))
             {
                 this.Close();
+            }
+
+            foreach (DataGridViewColumn c in DataGridView.Columns)
+            {
+                c.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
 
             pictureBox.Image = null;
@@ -337,6 +343,8 @@ namespace HEW2023
             pictureBox.Image = null;
             generateImage_button.Enabled = false;
             generateQR_button.Enabled = true;
+            Form8_Load(null, EventArgs.Empty);
+            dummy.StringDebug("再ロードがかかりました。");
         }
     }
 }
