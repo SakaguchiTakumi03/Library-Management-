@@ -160,10 +160,8 @@ namespace HEW2023
                 dummy.StringDebug("通過２");
             }
 
-            foreach (List<string> i in dataList)
-            {
-                dummy.StringDebug(i[1]);
-            }
+            dt.Clear();
+            dt.Reset();
 
             List<List<String>> categoryList = new List<List<string>>(dummy.GetQuerySQL("category_list", dummy.pr()));
             List<List<String>> recommendationList = new List<List<string>>(dummy.GetQuerySQL("recommendation_list", dummy.pr()));
@@ -205,7 +203,7 @@ namespace HEW2023
                             }
                             else
                             {
-                                dr[columnsList[k].ToString()] = "あります。";
+                                dr[columnsList[k].ToString()] = dataList[j][k];
                             }
                         }
                         else
@@ -230,13 +228,16 @@ namespace HEW2023
             DataGridView.Columns[3].Width = 70;
             DataGridView.Columns[5].Width = 65;
 
-            //ソート無効化
-            foreach (DataGridViewColumn c in DataGridView.Columns)
-            {
-                c.SortMode = DataGridViewColumnSortMode.NotSortable;
-            }
+            ////ソート無効化
+            //foreach (DataGridViewColumn c in DataGridView.Columns)
+            //{
+            //    c.SortMode = DataGridViewColumnSortMode.NotSortable;
+            //}
 
-            listCount_label.Text = "検索結果の表示数は「"+rowsCount.ToString()+"」です。";
+            listCount_label.Text = "検索結果の表示数は「"+rowsCount.ToString()+"件」です。";
+
+            DataGridView.Sort(DataGridView.Columns[0], ListSortDirection.Ascending);
+            DataGridView.Sort(DataGridView.Columns[0], ListSortDirection.Descending);
 
         }
 

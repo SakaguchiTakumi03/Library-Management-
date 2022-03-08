@@ -25,15 +25,10 @@ namespace HEW2023
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            DataGridView.AutoGenerateColumns = true;
             generateList = new List<int>();
             dataIndexList = new List<int>();
             dt = new DataTable();
             dummy = new Dummy();
-
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            DataGridView.AllowUserToAddRows = false;
 
             //MySQLに接続を確立
             if (!dummy.ConnectionDB())
@@ -46,6 +41,10 @@ namespace HEW2023
             DataGridView.MultiSelect = false;
             DataGridView.ReadOnly = true;
             this.DataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            DataGridView.AllowUserToAddRows = false;
 
             int deleteNum = 3;
 
@@ -96,7 +95,7 @@ namespace HEW2023
                             }
                             else
                             {
-                                dr[columnsList[k].ToString()] = "あります。";
+                                dr[columnsList[k].ToString()] = dataList[j][k];
                             }
                         }
                         else
