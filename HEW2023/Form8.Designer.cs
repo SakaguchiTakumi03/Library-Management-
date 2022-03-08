@@ -29,6 +29,7 @@ namespace HEW2023
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form8));
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.DataGridView = new System.Windows.Forms.DataGridView();
@@ -102,6 +103,7 @@ namespace HEW2023
             this.Controls.Add(this.generateQR_button);
             this.Controls.Add(this.DataGridView);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form8";
             this.Text = "QRコード生成";
             this.Load += new System.EventHandler(this.Form8_Load);
