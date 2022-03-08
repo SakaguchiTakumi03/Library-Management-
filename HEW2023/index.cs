@@ -28,6 +28,7 @@ namespace HEW2023
         public Form9 f9 = null;
         public login login = null;
         Dummy dummy = new Dummy();
+        bool errorResult = false;
 
         private void index_Load(object sender, EventArgs e)
         {
@@ -36,6 +37,7 @@ namespace HEW2023
             {
                 dummy.connectionClose();
                 dummy.MessageBox_("DB接続エラー","エラーが発生したためプログラムを終了します。\n接続を確認し、再度やり直してください。");
+                errorResult = true;
                 this.Close();
             }
             else
@@ -190,13 +192,18 @@ namespace HEW2023
 
         private void index_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show(
-                "蔵書管理アプリを終了しますか？", "終了確認ダイアログ",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-                  ) == DialogResult.No)
+            Console.WriteLine(errorResult);
+            if (!errorResult)
             {
-                e.Cancel = true;
+                if (MessageBox.Show("蔵書管理アプリを終了しますか？", "終了確認ダイアログ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
+                else if (errorResult)
+                {
+                    Console.WriteLine(errorResult);
+                    dummy.MessageBox_("例外処理","予期せぬ動作が含まれた恐れがあるため、管理者に問い合わせをお願いいたします。");
+                }
             }
         }
     }
