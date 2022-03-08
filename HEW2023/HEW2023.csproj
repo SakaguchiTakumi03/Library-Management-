@@ -35,6 +35,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>life041.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AForge, Version=2.2.3.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
       <HintPath>..\packages\AForge.2.2.3\lib\AForge.dll</HintPath>
@@ -403,6 +406,7 @@
     <None Include="Resource\img\white\white_stash.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="life041.ico" />
     <Content Include="Resource\img\black\black_QR.png" />
     <None Include="Resource\img\no_signal.jpg" />
     <None Include="Resource\img\white\white_read_QR.png" />

@@ -96,3 +96,4 @@ C:\makeProgram\C#\HEW2023\HEW2023\bin\Release\System.Interactive.Async.xml
 C:\makeProgram\C#\HEW2023\HEW2023\bin\Release\System.Linq.Async.xml
 C:\makeProgram\C#\HEW2023\HEW2023\bin\Release\System.Threading.Tasks.Extensions.xml
 C:\makeProgram\C#\HEW2023\HEW2023\bin\Release\System.ValueTuple.xml
+C:\makeProgram\C#\HEW2023\HEW2023\obj\Release\HEW2023.csproj.AssemblyReference.cache
