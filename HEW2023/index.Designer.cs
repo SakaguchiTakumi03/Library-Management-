@@ -186,6 +186,7 @@ namespace HEW2023
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "index";
             this.Text = "スタート画面";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.index_FormClosing);
             this.Load += new System.EventHandler(this.index_Load);
             this.ResumeLayout(false);
 
