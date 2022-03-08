@@ -27,7 +27,7 @@ namespace HEW2023
     {
 
         //画像フィルタリングのフィルタ値、ただし値を上げると精度と処理速度が相関的に増加する。
-        const int maxFilterSize = 10;
+        const int maxFilterSize = 13;
 
         public bool DeviceExist = false;                // デバイス有無
         public FilterInfoCollection videoDevices;       // カメラデバイスの一覧
@@ -118,18 +118,22 @@ namespace HEW2023
                     videoSource.Start();
 
                     inputCamera_button.Text = "Webカメラ停止";
-
                 }
             }
             else
             {
-                //カメラ停止処理
-                if (videoSource.IsRunning)
-                {
-                    this.CloseVideoSource();
-                    inputCamera_button.Text = "Webカメラ起動";
-                    pictureBox1.Image = Properties.Resources.no_signal;
-                }
+                StopFPS();
+            }
+        }
+
+        private void StopFPS()
+        {
+            //カメラ停止処理
+            if (videoSource.IsRunning)
+            {
+                this.CloseVideoSource();
+                inputCamera_button.Text = "Webカメラ起動";
+                pictureBox1.Image = Properties.Resources.no_signal;
             }
         }
 
@@ -150,6 +154,7 @@ namespace HEW2023
             if (videoSource != null && videoSource.IsRunning)
             {
                 dummy.StringDebug("QR読み取りプログラムを終了しています。");
+                //ビデオソースを開放する処理。
                 this.CloseVideoSource();
             }
         }
@@ -162,6 +167,8 @@ namespace HEW2023
 
                 //String text = string.Empty;
 
+                bool readDecision = false;
+
                 using (Mat imageMat = OpenCvSharp.Extensions.BitmapConverter.ToMat(MyBitmap))
                 {
                     //QRコードの解析処理
@@ -173,6 +180,11 @@ namespace HEW2023
                         i++;
 
                         int filterSize = i;
+
+                        if (readDecision)
+                        {
+                            return;
+                        }
 
                         //別のMATに移す
                         using (Mat imageMatFilter = imageMat.GaussianBlur(new OpenCvSharp.Size(filterSize,filterSize),0))
@@ -189,6 +201,7 @@ namespace HEW2023
                                     {
                                         text = result.Text;
                                         dummy.MessageBox_("QRコード取得結果",text);
+                                        readDecision = true;                                        
                                         return;
                                     }
                                 }
@@ -207,10 +220,5 @@ namespace HEW2023
                 this.Close();
             }
         }
-
-        //private void sendWebHook()
-        //{
-        //    var webhook = new 
-        //}
     }
 }
