@@ -70,7 +70,6 @@ C:\makeProgram\C#\HEW2023\HEW2023\obj\Release\HEW2023.csproj.CoreCompileInputs.c
 C:\makeProgram\C#\HEW2023\HEW2023\obj\Release\HEW2023.csproj.CopyComplete
 C:\makeProgram\C#\HEW2023\HEW2023\obj\Release\HEW2023.exe
 C:\makeProgram\C#\HEW2023\HEW2023\obj\Release\HEW2023.pdb
-C:\makeProgram\C#\HEW2023\HEW2023\obj\Release\HEW2023.csproj.AssemblyReference.cache
 C:\makeProgram\C#\HEW2023\HEW2023\bin\Release\AForge.dll
 C:\makeProgram\C#\HEW2023\HEW2023\bin\Release\AForge.Video.DirectShow.dll
 C:\makeProgram\C#\HEW2023\HEW2023\bin\Release\AForge.Video.dll
