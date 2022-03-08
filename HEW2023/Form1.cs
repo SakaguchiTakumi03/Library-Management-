@@ -33,10 +33,6 @@ namespace HEW2023
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
 
-            nowDate = dt.ToString("yyyy_MM_dd");
-
-            dummy.MessageBox_("test", nowDate);
-
             if (!dummy.ConnectionDB())
             {
                 Console.WriteLine("「Form1」でDBのコネクションが確率出来ませんでした");

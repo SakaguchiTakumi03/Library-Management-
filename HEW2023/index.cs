@@ -187,5 +187,17 @@ namespace HEW2023
                 f9.WindowState = FormWindowState.Normal;
             }
         }
+
+        private void index_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show(
+                "蔵書管理アプリを終了しますか？", "終了確認ダイアログ",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+                  ) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }
