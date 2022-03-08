@@ -45,8 +45,6 @@ namespace HEW2023
             DataGridView.ReadOnly = true;
             this.DataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-
-            DataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             DataGridView.AllowUserToAddRows = false;
@@ -107,7 +105,7 @@ namespace HEW2023
                             }
                             else
                             {
-                                dr[columnsList[k].ToString()] = "あります。";
+                                dr[columnsList[k].ToString()] = dataList[j][k];
                             }
                         }
                         else

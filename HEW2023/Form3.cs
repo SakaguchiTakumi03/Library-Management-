@@ -86,7 +86,7 @@ namespace HEW2023
                             }
                             else
                             {
-                                dr[columnsList[k].ToString()] = "あります。";
+                                dr[columnsList[k].ToString()] = dataList[j][k];
                             }
                         }
                         else
