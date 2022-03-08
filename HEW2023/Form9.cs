@@ -12,6 +12,7 @@ using OpenCvSharp;
 using OpenCvSharp.Extensions;
 using AForge.Video;
 using AForge.Video.DirectShow;
+using System.Threading;
 //using Discord.Webhooks;
 
 namespace HEW2023
@@ -117,23 +118,31 @@ namespace HEW2023
 
                     videoSource.Start();
 
+                    cmbCamera.Enabled = false;
+
                     inputCamera_button.Text = "Webカメラ停止";
                 }
             }
             else
             {
-                StopFPS();
-            }
-        }
+                //カメラ停止処理
+                if (videoSource.IsRunning)
+                {
+                    inputCamera_button.Enabled = false;
 
-        private void StopFPS()
-        {
-            //カメラ停止処理
-            if (videoSource.IsRunning)
-            {
-                this.CloseVideoSource();
-                inputCamera_button.Text = "Webカメラ起動";
-                pictureBox1.Image = Properties.Resources.no_signal;
+                    this.CloseVideoSource();
+
+                    //リソースを閉じるのが外部要因な為、処理続行をフリーズさせる。
+                    Thread.Sleep(1000);
+
+                    pictureBox1.Image = Properties.Resources.no_signal;
+
+                    inputCamera_button.Enabled = true;
+                    cmbCamera.Enabled = true;
+
+                    inputCamera_button.Text = "Webカメラ起動";
+
+                }
             }
         }
 

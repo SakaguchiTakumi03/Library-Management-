@@ -29,6 +29,7 @@ namespace HEW2023
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form9));
             this.inputCamera_button = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cmbCamera = new System.Windows.Forms.ComboBox();
@@ -82,6 +83,7 @@ namespace HEW2023
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.cmbCamera);
             this.Controls.Add(this.inputCamera_button);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form9";
             this.Text = "QR読み込み";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form9_FormClosing);

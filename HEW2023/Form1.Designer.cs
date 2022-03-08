@@ -29,6 +29,7 @@ namespace HEW2023
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -301,6 +302,7 @@ namespace HEW2023
             this.Controls.Add(this.author_textBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.title_textBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "書籍登録";
             this.Load += new System.EventHandler(this.Form1_Load);
