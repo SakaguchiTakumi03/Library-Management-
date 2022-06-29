@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace HEW2023
 {
-    public partial class Form8 : Form
+    public partial class CreateQR : Form
     {
 
         //宣言
@@ -26,7 +26,7 @@ namespace HEW2023
         String nowDate = String.Empty;
 
         //PictureBox pictureBox = 
-        public Form8()
+        public CreateQR()
         {
             InitializeComponent();
         }

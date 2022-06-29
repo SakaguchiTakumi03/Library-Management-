@@ -1,7 +1,7 @@
 ﻿
 namespace HEW2023
 {
-    partial class Form8
+    partial class CreateQR
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace HEW2023
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form8));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateQR));
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.DataGridView = new System.Windows.Forms.DataGridView();

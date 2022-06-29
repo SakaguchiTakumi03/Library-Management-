@@ -24,7 +24,7 @@ namespace HEW2023
     ///https://extralab.org/wp/qrcode_reader_creater_webcamera/
     ///End
 
-    public partial class Form9 : Form
+    public partial class ReadQR : Form
     {
 
         //画像フィルタリングのフィルタ値、ただし値を上げると精度と処理速度が相関的に増加する。
@@ -38,7 +38,7 @@ namespace HEW2023
 
         Dummy dummy = new Dummy();
 
-        public Form9()
+        public ReadQR()
         {
             InitializeComponent();
             this.getCameraInfo();

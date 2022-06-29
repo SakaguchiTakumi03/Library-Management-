@@ -15,9 +15,9 @@ namespace HEW2023
 {
 
     //他の処理が完成したら作成する
-    public partial class Form4 : Form
+    public partial class RegistrationTrends : Form
     {
-        public Form4()
+        public RegistrationTrends()
         {
             InitializeComponent();
         }
