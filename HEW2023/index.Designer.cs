@@ -1,7 +1,7 @@
 ﻿
 namespace HEW2023
 {
-    partial class index
+    partial class Index
     {
         /// <summary>
         /// 必要なデザイナー変数です。
@@ -29,7 +29,7 @@ namespace HEW2023
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(index));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Index));
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();

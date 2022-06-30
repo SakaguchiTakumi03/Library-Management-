@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace HEW2023
 {
-    public partial class Form3 : Form
+    public partial class BookList : Form
     {
         //宣言
         Dummy dummy = new Dummy();
         private DataTable dt = new DataTable();
-        public Form3()
+        public BookList()
         {
             InitializeComponent();
         }

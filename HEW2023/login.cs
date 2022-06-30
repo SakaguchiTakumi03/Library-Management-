@@ -11,13 +11,13 @@ using System.Windows.Forms;
 
 namespace HEW2023
 {
-    public partial class login : Form
+    public partial class Login : Form
     {
         //宣言
         Dummy dummy = new Dummy();
-        public Form7 f7 = null;
+        public Admin admin = null;
         int inputCount = 1;
-        public login()
+        public Login()
         {
             InitializeComponent();
         }
@@ -83,8 +83,8 @@ namespace HEW2023
 
             if (indexId >= 0 && passList[indexId][hoge[1]].Equals(inputPass))
             {
-                this.f7 = new Form7();
-                f7.Show();
+                this.admin = new Admin();
+                admin.Show();
                 timer.Stop();
                 this.Close();
             }
