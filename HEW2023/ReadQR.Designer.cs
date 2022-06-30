@@ -1,7 +1,7 @@
 ﻿
 namespace HEW2023
 {
-    partial class Form9
+    partial class ReadQR
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace HEW2023
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form9));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReadQR));
             this.inputCamera_button = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cmbCamera = new System.Windows.Forms.ComboBox();

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace HEW2023
 {
-    public partial class Form7 : Form
+    public partial class Admin : Form
     {
-        public Form7()
+        public Admin()
         {
             InitializeComponent();
         }

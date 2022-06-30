@@ -10,34 +10,23 @@ using System.Windows.Forms;
 
 namespace HEW2023
 {
-    public partial class Form6 : Form
+    public partial class List : Form
     {
-        public Form6()
+        //宣言
+        Dummy dummy = new Dummy();
+        private DataTable dt = new DataTable();
+        public List()
         {
             InitializeComponent();
         }
 
-        Dummy dummy = new Dummy();
-        DataTable dt = new DataTable();
-
-        List<int> generateList = new List<int>();
-        List<int> dataIndexList = new List<int>();
-
-        private void Form6_Load(object sender, EventArgs e)
+        private void Form3_Load(object sender, EventArgs e)
         {
-            DataGridView.AutoGenerateColumns = true;
-            //generateList = new List<int>();
-            dataIndexList = new List<int>();
-            dt = new DataTable();
-            dummy = new Dummy();
-
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-
             //MySQLに接続を確立
             if (!dummy.ConnectionDB())
             {
-                Console.WriteLine("「Form6」でDBのコネクションが確率出来ませんでした");
+                Console.WriteLine("「Form3」でDBのコネクションが確率出来ませんでした");
+                dummy.MessageBox_("不明なエラー", "処理を行えないため終了します。");
                 this.Close();
             }
 
@@ -48,13 +37,6 @@ namespace HEW2023
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             DataGridView.AllowUserToAddRows = false;
-
-
-            //DataGridView1の列の幅をユーザーが変更できないようにする
-            DataGridView.AllowUserToResizeColumns = false;
-
-            //DataGridView1の行の高さをユーザーが変更できないようにする
-            DataGridView.AllowUserToResizeRows = false;
 
             int deleteNum = 3;
 
@@ -75,15 +57,14 @@ namespace HEW2023
                 dt.Columns.Add(columnsList[i]);
             }
 
+            List<int> generateList = new List<int>();
             int generateCount = 0;
 
-            //RowIndex
             for (int j = 0; j < dataCount; j++)
             {
-                DataRow dr = dt.NewRow(); //1
+                DataRow dr = dt.NewRow();
                 if (originalDataList[j][8] != "1")
                 {
-                    dataIndexList.Add(j+1);
                     for (int k = 0; k < columnsCount; k++)
                     {
                         int index = 0;
@@ -119,7 +100,7 @@ namespace HEW2023
                         generateList.Add(generateCount);
                     }
                     dt.Rows.Add(dr);
-
+                    
                     generateCount++;
                 }
             }
@@ -146,75 +127,13 @@ namespace HEW2023
                 dummy.intDebug(i);
                 DataGridView.Rows[i].DefaultCellStyle.BackColor = Color.Aquamarine;
             }
-        }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //MySQLに接続を確立
-            if (!dummy.ConnectionDB())
+            //DataGridViewのセルの存在を確認
+            if (dummy.gridCheck(DataGridView, this.Text))
             {
-                Console.WriteLine("「Form6」でDBのコネクションが確率出来ませんでした");
-                dummy.MessageBox_("不明なエラー", "処理を行えないため終了します。");
                 this.Close();
             }
-            List<List<String>> originalDataList = new List<List<string>>(dummy.GetQuerySQL("books_list", dummy.books_pr()));
 
-            int selectedRowIndex = DataGridView.CurrentCell.RowIndex;
-            int selectId = dataIndexList[selectedRowIndex];
-            String selectTitle = originalDataList[selectId-1][1];
-            String title = "削除しますか？";
-            String message = "選択された「" + selectTitle + "」を削除しますか？";
-
-            if (generateList.Contains(selectedRowIndex))
-            {
-                if (dummy.selectMessageBox(dummy.MessageBox_re("ブックマーク確認", "ブックマーク済みですが削除処理に進みますか？")))
-                {
-                    if (dummy.selectMessageBox(dummy.MessageBox_re(title, message)))
-                    {
-                        if (dummy.sqlExectionQuery(deleteQuery(selectId)))
-                        {
-                            title = "削除完了";
-                            message = "選択された「" + selectTitle + "」を削除しました。";
-                            dummy.MessageBox_(title, message);
-                            generateList.Clear();
-                            Form6_Load(null, EventArgs.Empty);
-                        }
-                        else
-                        {
-                            dummy.StringDebug("form6のquery実行にてエラー発生。");
-                            this.Close();
-                            return;
-                        }
-                    }
-                }
-            }
-            else
-            {
-                if (dummy.selectMessageBox(dummy.MessageBox_re(title, message)))
-                {
-                    if (dummy.sqlExectionQuery(deleteQuery(selectId)))
-                    {
-                        title = "削除完了";
-                        message = "選択された「" + selectTitle + "」を削除しました。";
-                        dummy.MessageBox_(title, message);
-                        generateList.Clear();
-                        Form6_Load(null, EventArgs.Empty);
-                    }
-                    else
-                    {
-                        dummy.StringDebug("form6のquery実行にてエラー発生。");
-                        this.Close();
-                        return;
-                    }
-                }
-            }
-                
-        }
-
-        private String deleteQuery(int selectBookId)
-        {
-            String deleteQuery = "UPDATE `books_list` SET `delete_flag` = '1' WHERE `books_list`.`id` = " + selectBookId.ToString();
-            return deleteQuery;
         }
     }
 }

@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace HEW2023
 {
-    public partial class Form1 : Form
+    public partial class Input : Form
     {
         Dummy dummy = new Dummy();
         DateTime dt = DateTime.Today;
         String nowDate = String.Empty;
 
-        public Form1()
+        public Input()
         {
             InitializeComponent();
         }

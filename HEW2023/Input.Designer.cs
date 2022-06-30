@@ -1,7 +1,7 @@
 ﻿
 namespace HEW2023
 {
-    partial class Form1
+    partial class Input
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace HEW2023
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Input));
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();

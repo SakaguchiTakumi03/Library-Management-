@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace HEW2023
 {
-    public partial class Form5 : Form
+    public partial class SearchBooks : Form
     {
         //宣言
         Dummy dummy = new Dummy();
         private DataTable dt = new DataTable();
 
-        public Form5()
+        public SearchBooks()
         {
             InitializeComponent();
         }
