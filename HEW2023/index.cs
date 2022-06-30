@@ -11,22 +11,22 @@ using System.Windows.Forms;
 
 namespace HEW2023
 {
-    public partial class Index : Form
+    public partial class index : Form
     {
-        public Index()
+        public index()
         {
             InitializeComponent();
         }
 
-        public Input input = null;
-        public Bookmark bookmark = null;
-        public List list = null;
-        public RegistrationTrends regiTrends = null;
-        public SearchBooks searchBooks = null;
-        public LogicalDelete logidele = null;
-        public CreateQR createQR = null;
-        public ReadQR readQR = null;
-        public Login login = null;
+        public Form1 f1 = null;
+        public Form2 f2 = null;
+        public Form3 f3 = null;
+        public Form4 f4 = null;
+        public Form5 f5 = null;
+        public Form6 f6 = null;
+        public Form8 f8 = null;
+        public Form9 f9 = null;
+        public login login = null;
         Dummy dummy = new Dummy();
         bool errorResult = false;
 
@@ -55,79 +55,79 @@ namespace HEW2023
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (this.input == null || this.input.IsDisposed)
+            if (this.f1 == null || this.f1.IsDisposed)
             {
-                this.input = new Input();
-                input.Show();
+                this.f1 = new Form1();
+                f1.Show();
             }
             else
             {
-                input.WindowState = FormWindowState.Normal;
+                f1.WindowState = FormWindowState.Normal;
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (this.bookmark == null || this.bookmark.IsDisposed)
+            if (this.f2 == null || this.f2.IsDisposed)
             {
-                this.bookmark = new Bookmark();
-                bookmark.Show();
+                this.f2 = new Form2();
+                f2.Show();
             }
             else
             {
-                bookmark.WindowState = FormWindowState.Normal;
+                f2.WindowState = FormWindowState.Normal;
             }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (this.list == null || this.list.IsDisposed)
+            if (this.f3 == null || this.f3.IsDisposed)
             {
-                this.list = new List();
-                list.Show();
+                this.f3 = new Form3();
+                f3.Show();
             }
             else
             {
-                list.WindowState = FormWindowState.Normal;
+                f3.WindowState = FormWindowState.Normal;
             }
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if (this.regiTrends == null || this.regiTrends.IsDisposed)
+            if (this.f4 == null || this.f4.IsDisposed)
             {
-                this.regiTrends = new RegistrationTrends();
-                regiTrends.Show();
+                this.f4 = new Form4();
+                f4.Show();
             }
             else
             {
-                regiTrends.WindowState = FormWindowState.Normal;
+                f4.WindowState = FormWindowState.Normal;
             }
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            if (this.searchBooks == null || this.searchBooks.IsDisposed)
+            if (this.f5 == null || this.f5.IsDisposed)
             {
-                this.searchBooks = new SearchBooks();
-                searchBooks.Show();
+                this.f5 = new Form5();
+                f5.Show();
             }
             else
             {
-                searchBooks.WindowState = FormWindowState.Normal;
+                f5.WindowState = FormWindowState.Normal;
             }
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            if (this.logidele == null || this.logidele.IsDisposed)
+            if (this.f6 == null || this.f6.IsDisposed)
             {
-                this.logidele = new LogicalDelete();
-                logidele.Show();
+                this.f6 = new Form6();
+                f6.Show();
             }
             else
             {
-                logidele.WindowState = FormWindowState.Normal;
+                f6.WindowState = FormWindowState.Normal;
             }
         }
 
@@ -135,7 +135,7 @@ namespace HEW2023
         {
             if (this.login == null || this.login.IsDisposed)
             {
-                this.login = new Login();
+                this.login = new login();
                 login.Show();
             }
             else
@@ -166,27 +166,27 @@ namespace HEW2023
 
         private void button9_Click(object sender, EventArgs e)
         {
-            if (this.createQR == null || this.createQR.IsDisposed)
+            if (this.f8 == null || this.f8.IsDisposed)
             {
-                this.createQR = new CreateQR();
-                createQR.Show();
+                this.f8 = new Form8();
+                f8.Show();
             }
             else
             {
-                createQR.WindowState = FormWindowState.Normal;
+                f8.WindowState = FormWindowState.Normal;
             }
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
-            if (this.readQR == null || this.readQR.IsDisposed)
+            if (this.f9 == null || this.f9.IsDisposed)
             {
-                this.readQR = new ReadQR();
-                readQR.Show();
+                this.f9 = new Form9();
+                f9.Show();
             }
             else
             {
-                readQR.WindowState = FormWindowState.Normal;
+                f9.WindowState = FormWindowState.Normal;
             }
         }
 

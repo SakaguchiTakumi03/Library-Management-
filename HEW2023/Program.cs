@@ -16,7 +16,7 @@ namespace HEW2023
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Index());
+            Application.Run(new index());
         }
     }
 }
