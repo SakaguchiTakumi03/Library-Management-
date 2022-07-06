@@ -196,7 +196,7 @@ ALTER TABLE `user_list`
 -- テーブルのAUTO_INCREMENT `books_list`
 --
 ALTER TABLE `books_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- テーブルのAUTO_INCREMENT `category_list`
